@@ -1,0 +1,277 @@
+/* border-box pour tous les éléments, inclu padding et border dans la largeur/hauteur. Les pseudo-éléments
+::before et ::after ne sont pas ciblés par le sélecteur universel * et doivent être nommés spécifiquement*/
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+body {
+    margin: 0;
+    padding: 0;
+    min-width: 375px;
+    font-family: 'Roboto', sans-serif; 
+}
+
+h1{
+    font-size: 16px;
+    font-weight: 500;
+    color: #353535;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: 700;
+}
+p {
+    font-size: 17px;
+    font-weight: 300;
+    color: #353535;
+}
+
+button {
+    background-image: linear-gradient(to top, #9356DC, #FF79DA); /* Dégradé de couleur pour les boutons */
+    color: white; 
+    border: none;
+    border-radius: 20px;
+    padding: 1em 1.5em;
+    margin : 10px 0 50px 0;
+    cursor: pointer;
+}
+button:hover {
+    background-image: linear-gradient(to top, #af79e2, #fe9fdf); /* Dégradé plus clair pour le survol */
+    background-image: linear-gradient(to top, );
+}
+
+.purple {
+    color: #9356DC;  /* pour l'icone store (à déplacer dans la bonne section) */
+}
+
+i {
+    color: #919191; /*couleur pour toutes les icones (à améliorer)*/
+}
+
+/**********header (mobile)*********/
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; 
+    padding: 30px 0 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+ 
+  .go-back {
+    display: inline-block; /* Affiche la flèche */
+    position: absolute;    /* Positionne la flèche en absolu dans le header */
+    left: 0;               /* Alignée à gauche */
+  }
+   .go-back.home {
+    display: none; /* Cache la flèche pour la page d'accueil */
+  }
+
+  .logo {
+    width: 162px;  
+
+}
+
+ 
+/************ recherches ***********/
+.search-section {
+    text-align: center;
+    background: #F6f6f6;
+}
+.search-section h2 {
+    margin: 20px 70px;
+}
+
+.location{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px 0;
+    background: #eaeaea;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+.location i{
+    color: #353535;
+    margin-right: 20px;
+}
+
+
+/**************section fonctionnement********/
+.section-fonctionnement {
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Ajusté pour aligner les éléments au début (à gauche) */
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.frame {
+    width: 100%;
+    background-color: #F6f6f6;
+    border-radius: 25px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+    padding: 2em;
+    margin: 1em 0;
+    position: relative; /* pour répondre a position absolute de frame-number*/
+    display: flex;
+    align-items: center;
+}
+
+.frame-number {
+    background-color: #9356DC;
+    color: white;
+    font-size: 1em;
+    border-radius: 50%;
+    padding: 0.5em;
+    min-width: 1.5em; 
+    height: 1.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute; /*pour pouvoir positionner hors du cadre*/
+    left: -0.75em; /* pour sortir le numéro hors du cadre */
+    top: 50%; /* associé à transform pour centrer verticalement*/
+    transform: translate(0, -50%);  /* associé à top 50% pour centrer verticalement*/
+
+}
+
+.frame p {
+    color: #333;
+    flex: 1;
+    text-align: left;
+    margin: 0 1em;
+}
+
+
+/*****************restaurants*********/
+
+.restaurants {
+    background-color: #f6f6f6; 
+    padding: 1em;
+}
+.restaurants a{
+    text-decoration: none;
+}
+
+.restaurant-card {
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+.restaurant-image {
+    position: relative;
+}
+
+.restaurant-image img {
+    width: 100%;
+    display: block;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.new-badge {
+    display: none; /* Par défaut, le badge "Nouveau" est caché */
+    background-color: #99E2D0;
+    color: #2d5f44; 
+    padding: 0.25em 0.5em;
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+    z-index: 10; /*place le badge au dessus de l'image - nécessite une position relative ou absolue*/
+}
+
+.new .new-badge {
+    display: block; /* Le badge "Nouveau" est affiché seulement si la classe 'new' est présente */
+}
+
+
+.restaurant-info {
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info-content h3 {
+    margin: 0;
+    color: #333;
+}
+
+.heart-zone {
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.heart-empty, .heart-full {
+    top: 0;
+    left: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+.heart-full {
+    opacity: 0; /* Cache coeur plein */
+  }
+  
+.heart-zone:hover .heart-full {
+    opacity: 1; /* Affiche coeur plein au survol */
+  }
+  
+.heart-zone:hover .heart-empty {
+    opacity: 0; /* Cache coeur vide au survol */
+  }
+
+
+/************footer********/
+
+.footer {
+    background-color: #353535; 
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+}
+.footer-logo{
+    font: italic 400 18px 'Shrikhand';
+    color: white;
+}
+.footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.footer a {
+    text-decoration: none;
+    color: white;
+}
+.footer i {
+    color: white;
+}
+.footer-icon { 
+    display: inline-block;
+    width: 30px; /* Taille fixe pour l'espace réservé à l'icône - permet d'aligner le texte à la suite*/
+    text-align: left; 
+}
+.footer-text1 {
+    font: 500 16px;
+    margin-bottom: 10px;
+ }
+.footer-text2 {
+    font: 400 16px;
+    margin-bottom: 10px;
+ }
+
+
+
+
+
+
+
+
