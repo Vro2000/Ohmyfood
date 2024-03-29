@@ -5,11 +5,12 @@
 /*font-family*/
 /**************** MIXINS ****************/
 /**************** SCSS ****************/
-/* border-box pour tous les éléments, inclu padding et border dans la largeur/hauteur.*/
+/* remise à 0 styles par défaut pour tous les éléments + border-box inclu padding et border dans la largeur/hauteur.*/
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  text-decoration: none;
 }
 
 body {
@@ -27,6 +28,7 @@ h2 {
   margin: 0;
   font-size: 18px;
   font-weight: 700;
+  color: #353535;
 }
 
 button {
@@ -59,7 +61,8 @@ header .go-back {
   position: absolute;
   left: 0;
 }
-header .go-back.home { /* ajout de la class home sur la page d'accueil uniquement, pour annuler l'affichage*/
+header .go-back.home {
+  /* ajout de la class home sur la page d'accueil uniquement, pour annuler l'affichage*/
   display: none;
 }
 header .logo {
@@ -75,32 +78,25 @@ header .logo {
   padding: 15px 0;
   background: #eaeaea;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  justify-content: center;
 }
 .search-section .location i {
   color: #353535;
-  margin-right: 0px;
+}
+.search-section .location input {
+  width: 130px;
+  border: none;
+  background-color: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
 }
 .search-section .location ::-moz-placeholder {
-  width: 130px;
-  border: none;
-  background-color: inherit;
-  font-size: 16px;
-  font-weight: 500;
   opacity: 1;
   color: black;
-  text-align: center;
 }
-.search-section .location input,
 .search-section .location ::placeholder {
-  width: 130px;
-  border: none;
-  background-color: inherit;
-  font-size: 16px;
-  font-weight: 500;
   opacity: 1;
   color: black;
-  text-align: center;
 }
 .search-section .hero {
   display: flex;
@@ -138,12 +134,7 @@ header .logo {
   margin-left: 10px;
   position: relative;
   display: flex;
-  align-items: center;
-}
-.frame p {
-  flex: 1;
-  text-align: left;
-  margin: 0 1em;
+  gap: 16px;
 }
 .frame .frame-number {
   background-color: #9356dc;
@@ -153,7 +144,6 @@ header .logo {
   padding: 8px;
   height: 24px;
   display: flex;
-  justify-content: center;
   align-items: center;
   position: absolute;
   left: -12px;
@@ -174,9 +164,6 @@ header .logo {
   gap: 15px;
   background-color: #f6f6f6;
   padding: 50px 20px 50px 20px;
-}
-.restaurants a {
-  text-decoration: none;
 }
 .restaurants .restaurant-card {
   height: 251px;
@@ -208,45 +195,34 @@ header .logo {
   right: 12px;
   z-index: 10;
 }
-.restaurants .restaurant-card .restaurant-info {
+.restaurants .new .new-badge {
+  display: block;
+}
+.restaurants .restaurant-info {
   padding: 16px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
-.restaurants .restaurant-card .restaurant-info .info-content h2 {
-  margin: 0;
-  color: #353535;
-}
-.restaurants .restaurant-card .restaurant-info .info-content p {
-  color: black;
-}
-.restaurants .restaurant-card .restaurant-info .heart-zone {
+.restaurants .restaurant-info .heart-zone {
   position: relative;
-  font-size: 24px;
-  cursor: crosshair;
 }
-.restaurants .restaurant-card .restaurant-info .heart-zone .heart-checkbox {
+.restaurants .restaurant-info .heart-zone .heart-checkbox {
   position: absolute;
   top: 50%;
-  right: 0;
   transform: translate(0, -50%);
   display: none;
 }
-.restaurants .restaurant-card .restaurant-info .heart-zone .heart {
-  display: block;
-  width: 24px;
-  height: 24px;
+.restaurants .restaurant-info .heart-zone .heart {
+  cursor: pointer;
+  display: block; /* S'assure que le label agit comme un container bloc*/
+  width: 24px; /* Largeur pour l'image de fond*/
+  height: 24px; /* Hauteur pour l'image de fond*/
   background-image: url("../../images/Icons/Heart-empty.png");
   background-repeat: no-repeat;
 }
-.restaurants .restaurant-card .restaurant-info .heart-zone .heart-checkbox:checked + .heart {
+.restaurants .restaurant-info .heart-zone .heart-checkbox:checked + .heart {
   background-image: url("../../images/Icons/Heart-full.png");
   background-repeat: no-repeat;
-}
-
-.new .new-badge {
-  display: block;
 }
 
 /************ footer  ********/

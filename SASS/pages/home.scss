@@ -39,26 +39,25 @@ $font-2: "shrikhand", cursive;
 }
 
 @mixin header-mixin {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    padding: 20px 0 20px 0;
-    box-shadow: $shadow-light;
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 20px 0 20px 0;
+  box-shadow: $shadow-light;
+
   .go-back {
     display: inline-block;
     position: absolute;
     left: 0;
   }
-  .go-back.home { /* ajout de la class home sur la page d'accueil uniquement, pour annuler l'affichage*/
+  .go-back.home {
+    /* ajout de la class home sur la page d'accueil uniquement, pour annuler l'affichage*/
     display: none;
   }
   .logo {
     width: 162px;
   }
-
-
 }
 
 @mixin footer-mixin {
@@ -103,11 +102,12 @@ $font-2: "shrikhand", cursive;
 
 /**************** SCSS ****************/
 
-/* border-box pour tous les éléments, inclu padding et border dans la largeur/hauteur.*/
+/* remise à 0 styles par défaut pour tous les éléments + border-box inclu padding et border dans la largeur/hauteur.*/
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  text-decoration: none;
 }
 
 body {
@@ -124,6 +124,7 @@ h2 {
   margin: 0;
   font-size: 18px;
   font-weight: 700;
+  color: $grey-dark;
 }
 button {
   @include button-mixin;
@@ -131,10 +132,8 @@ button {
 
 /************ header (mobile) *********/
 
-header{
- @include header-mixin;
-
-
+header {
+  @include header-mixin;
 }
 
 /************ section recherches ***********/
@@ -147,21 +146,20 @@ header{
     padding: 15px 0;
     background: $grey-searchbar;
     box-shadow: $shadow-strong;
-    justify-content: center;
     i {
       color: $grey-dark;
-      margin-right: 0px;
     }
-    input,
-    ::placeholder {
+    input {
       width: 130px;
       border: none;
       background-color: inherit;
       font-size: 16px;
       font-weight: 500;
+      text-align: center;
+    }
+    ::placeholder {
       opacity: 1;
       color: black;
-      text-align: center;
     }
   }
   .hero {
@@ -200,12 +198,8 @@ header{
   margin-left: 10px;
   position: relative;
   display: flex;
-  align-items: center;
-  p {
-    flex: 1;
-    text-align: left;
-    margin: 0 1em;
-  }
+  gap: 16px;
+  
   .frame-number {
     background-color: $purple;
     color: white;
@@ -214,7 +208,6 @@ header{
     padding: 8px;
     height: 24px;
     display: flex;
-    justify-content: center;
     align-items: center;
     position: absolute;
     left: -12px;
@@ -237,9 +230,6 @@ header{
   background-color: $grey-light;
   padding: 50px 20px 50px 20px;
 
-  a {
-    text-decoration: none;
-  }
   .restaurant-card {
     height: 251px;
     background-color: white;
@@ -270,52 +260,40 @@ header{
       right: 12px;
       z-index: 10;
     }
-
-    .restaurant-info {
-      padding: 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      .info-content {
-        h2 {
-          margin: 0;
-          color: $grey-dark;
-        }
-        p {
-          color: black;
-        }
-      }
-      .heart-zone {
-        position: relative;
-        font-size: 24px;
-        cursor: crosshair;
-
-        .heart-checkbox {
-          position: absolute;
-          top: 50%;
-          right: 0;
-          transform: translate(0, -50%);
-          display: none;
-        }
-        .heart {
-          display: block; // S'assure que le label agit comme un container bloc
-          width: 24px; // Largeur pour l'image de fond
-          height: 24px; // Hauteur pour l'image de fond
-          background-image: url("../../images/Icons/Heart-empty.png");
-          background-repeat: no-repeat;
-        }
-        .heart-checkbox:checked + .heart {
-          background-image: url("../../images/Icons/Heart-full.png");
-          background-repeat: no-repeat;
-        }
-      }
+  }
+  .new {
+    .new-badge {
+      display: block;
     }
   }
-}
-.new {
-  .new-badge {
-    display: block;
+
+  .restaurant-info {
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+
+    .heart-zone {
+      position: relative;
+
+      .heart-checkbox {
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+        display: none;
+      }
+      .heart {
+        cursor: pointer;
+        display: block; /* S'assure que le label agit comme un container bloc*/
+        width: 24px; /* Largeur pour l'image de fond*/
+        height: 24px; /* Hauteur pour l'image de fond*/
+        background-image: url("../../images/Icons/Heart-empty.png");
+        background-repeat: no-repeat;
+      }
+      .heart-checkbox:checked + .heart {
+        background-image: url("../../images/Icons/Heart-full.png");
+        background-repeat: no-repeat;
+      }
+    }
   }
 }
 
@@ -323,4 +301,3 @@ header{
 footer {
   @include footer-mixin;
 }
-
