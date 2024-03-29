@@ -1,221 +1,250 @@
 @charset "UTF-8";
+/**************** VARIABLES ****************/
 /* couleurs*/
-/* Roboto*/
-/*Shrikhand, italic*/
+/*ombres*/
+/*font-family*/
+/**************** MIXINS ****************/
+/**************** SCSS ****************/
 /* border-box pour tous les éléments, inclu padding et border dans la largeur/hauteur.*/
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
-  padding: 0;
   min-width: 375px;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
 }
 
 h1 {
-  font-size: 16px;
-  font-weight: 500;
-  color: #353535;
-}
-
-h2 {
+  margin: 0;
   font-size: 24px;
   font-weight: 700;
 }
 
-p {
-  font-size: 17px;
-  font-weight: 300;
-  color: #353535;
+h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
 }
 
 button {
-  background-image: linear-gradient(to top, #9356DC, #FF79DA); /* Dégradé de couleur pour les boutons */
+  background-image: linear-gradient(to top, #9356dc, #ff79da);
   color: white;
+  font-size: 16px;
+  font-weight: 500;
   border: none;
-  border-radius: 20px;
-  padding: 1em 1.5em;
-  margin: 10px 0 50px 0;
+  border-radius: 25px;
+  padding: 12px 20px;
   cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-button button:hover {
-  background-image: linear-gradient(to top, #ae80e5, #fface8); /* Dégradé plus clair pour le survol */
-}
-
-.purple {
-  color: #9356DC; /* pour l'icone store (à déplacer dans la bonne section) */
+button:hover {
+  background-image: linear-gradient(to top, #af79e2, #fe9fdf);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-i {
-  color: #919191; /*couleur pour toutes les icones (à améliorer)*/
-}
-
-/********** Header (Mobile) **********/
+/************ header (mobile) *********/
 header {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative; /* Position relative pour positionner la flèche en absolu */
-  padding: 30px 0 20px 0;
+  position: relative;
+  padding: 20px 0 20px 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-header .go-back {
-  display: inline-block; /* Affiche la flèche */
-  position: absolute; /* Positionne la flèche en absolu dans le header */
-  left: 0; /* Alignée à gauche */
+
+.go-back {
+  display: inline-block;
+  position: absolute;
+  left: 0;
 }
-header .go-back .go-back.home {
-  display: none; /* Cache la flèche pour la page d'accueil */
+
+.go-back.home {
+  display: none;
 }
-header .logo {
+
+.logo {
   width: 162px;
 }
 
-/********** Section Recherches**********/
+/************ section recherches ***********/
 .search-section {
   text-align: center;
-  background: #F6F6F6;
-}
-.search-section .search-section h2 {
-  margin: 20px 70px;
+  background: #f6f6f6;
 }
 .search-section .location {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 10px 0;
-  background: #EAEAEA;
+  padding: 15px 0;
+  background: #eaeaea;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  justify-content: center;
 }
-.search-section .location .location i {
+.search-section .location i {
   color: #353535;
-  margin-right: 20px;
+  margin-right: 0px;
 }
-
-/************** Section Fonctionnement **************/
-.section-fonctionnement {
-  padding: 1em;
+.search-section .location input {
+  width: 130px;
+  border: none;
+  background-color: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  color: black;
+  text-align: center;
+}
+.search-section .hero {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Alignement au début (à gauche)*/
+  align-items: center;
+  padding: 40px 30px 50px 30px;
+  gap: 15px;
+}
+.search-section .hero h1 {
+  margin: 0 20px;
+}
+.search-section .hero p {
+  font-size: 18px;
+  font-weight: 300;
+  color: #7e7e7e;
+}
+
+/************ section fonctionnement  ********/
+.section-fonctionnement {
+  padding: 50px 20px 50px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
+  gap: 30px;
 }
-.section-fonctionnement .frame {
-  width: 100%;
-  background-color: #F6F6F6;
+
+.frame {
+  width: 97%;
+  background-color: #f6f6f6;
   border-radius: 25px;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
-  padding: 2em;
-  margin: 1em 0;
-  position: relative; /* pour répondre a position absolute de frame-number*/
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  padding: 30px 0 30px 30px;
+  margin-left: 10px;
+  position: relative;
   display: flex;
   align-items: center;
 }
-.section-fonctionnement .frame .frame-number {
-  background-color: #9356DC;
-  color: white;
-  font-size: 1em;
-  border-radius: 50%;
-  padding: 0.5em;
-  min-width: 1.5em;
-  height: 1.5em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute; /*pour pouvoir positionner hors du cadre*/
-  left: -0.75em; /* pour sortir le numéro hors du cadre */
-  top: 50%; /* associé à transform pour centrer verticalement*/
-  transform: translate(0, -50%); /* associé à top 50% pour centrer verticalement*/
-}
-.section-fonctionnement .frame .frame p {
-  color: #353535;
+.frame p {
   flex: 1;
   text-align: left;
   margin: 0 1em;
 }
+.frame .frame-number {
+  background-color: #9356dc;
+  color: white;
+  font-size: 16px;
+  border-radius: 50%;
+  padding: 8px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: -12px;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+.frame .i-grey {
+  color: #7e7e7e;
+}
+.frame .i-purple {
+  color: #9356dc;
+}
 
-/***************** Restaurants *****************/
+/************ section restaurants *********/
 .restaurants {
-  background-color: #F6F6F6;
-  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: #f6f6f6;
+  padding: 50px 20px 50px 20px;
+}
+.restaurants a {
+  text-decoration: none;
 }
 .restaurants .restaurant-card {
-  background-color: #ffffff;
+  height: 251px;
+  background-color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   overflow: hidden;
-  margin-bottom: 1em;
+  margin-bottom: 16px;
   display: flex;
   flex-direction: column;
 }
 .restaurants .restaurant-card .restaurant-image {
   position: relative;
 }
-.restaurants .restaurant-card .restaurant-image .restaurant-image img {
+.restaurants .restaurant-card .restaurant-image img {
   width: 100%;
+  height: 175px;
   display: block;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
-.restaurants .restaurant-card .restaurant-image .new-badge {
-  display: none; /* Par défaut, le badge "Nouveau" est caché*/
-  background-color: #99E2D0;
+.restaurants .restaurant-card .new-badge {
+  display: none;
+  background-color: #99e2d0;
   color: #008766;
-  padding: 0.25em 0.5em;
+  padding: 4px 8px;
   position: absolute;
-  top: 0.5em;
-  right: 0.5em;
-  z-index: 10; /*place le badge au dessus de l'image - nécessite une position relative ou absolue*/
-}
-.restaurants .restaurant-card .new .new-badge { /* à placer après display-none */
-  display: block; /* Le badge "Nouveau" est affiché seulement si la classe 'new' est présente*/
+  top: 12px;
+  right: 12px;
+  z-index: 10;
 }
 .restaurants .restaurant-card .restaurant-info {
-  padding: 1em;
+  padding: 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.restaurants .restaurant-card .restaurant-info .info-content h3 {
+.restaurants .restaurant-card .restaurant-info .info-content h2 {
   margin: 0;
   color: #353535;
 }
+.restaurants .restaurant-card .restaurant-info .info-content p {
+  color: black;
+}
 .restaurants .restaurant-card .restaurant-info .heart-zone {
-  font-size: 1.5em;
+  position: relative;
+  font-size: 24px;
   cursor: pointer;
 }
-.restaurants .restaurant-card .restaurant-info .heart-zone .heart-empty, .restaurants .restaurant-card .restaurant-info .heart-zone .heart-full {
-  top: 0;
-  left: 0;
+.restaurants .restaurant-card .restaurant-info .heart-zone .heart-empty,
+.restaurants .restaurant-card .restaurant-info .heart-zone .heart-full {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(0, -50%);
   transition: opacity 0.3s ease;
 }
 .restaurants .restaurant-card .restaurant-info .heart-zone .heart-full {
-  opacity: 0; /* Cache coeur plein*/
-}
-.restaurants .restaurant-card .restaurant-info .heart-zone .heart-zone:hover { /* Affiche coeur plein au survol*/
-  /* Cache coeur vide au survol*/
-}
-.restaurants .restaurant-card .restaurant-info .heart-zone .heart-zone:hover .heart-full {
-  opacity: 1;
-}
-.restaurants .restaurant-card .restaurant-info .heart-zone .heart-zone:hover .heart-empty {
   opacity: 0;
 }
+.restaurants .restaurant-card .restaurant-info .heart-zone:hover .heart-full {
+  opacity: 1;
+}
+.restaurants .restaurant-card .restaurant-info .heart-zone:hover .heart-empty {
+  opacity: 0;
+}
+.restaurants .new .new-badge {
+  display: block;
+}
 
-/************ Footer ************/
+/************ footer  ********/
 .footer {
   background-color: #353535;
-  color: white;
-  padding: 2em;
+  padding: 32px;
   display: flex;
+  gap: 20px;
   flex-direction: column;
-}
-.footer .footer-logo {
-  font: italic 400 18px "Shrikhand";
 }
 .footer ul {
   list-style: none;
@@ -229,16 +258,22 @@ header .logo {
 .footer i {
   color: white;
 }
+.footer .footer-logo {
+  font: italic 400 18px "shrikhand", cursive;
+  color: white;
+}
 .footer .footer-icon {
   display: inline-block;
-  width: 30px; /* Taille fixe pour l'espace réservé à l'icône - permet d'aligner le texte à la suite*/
+  width: 30px;
   text-align: left;
 }
 .footer .footer-text1 {
-  font: 500 16px;
+  font-size: 16px;
+  font-weight: 500;
   margin-bottom: 10px;
 }
 .footer .footer-text2 {
-  font: 400 16px;
+  font-size: 16px;
+  font-weight: 400;
   margin-bottom: 10px;
 }/*# sourceMappingURL=home.css.map */
