@@ -3,9 +3,6 @@
 /* couleurs*/
 /*ombres*/
 /*font-family*/
-/*$card-title: 700 18px;
-$card-text: 300 17px;
-$new-badge-txt: 500 14px;*/
 /**************** MIXINS ****************/
 /**************** SCSS ****************/
 /* border-box pour tous les éléments, inclu padding et border dans la largeur/hauteur.*/
@@ -21,19 +18,22 @@ body {
 }
 
 h1 {
-  font-size: 16px;
-  font-weight: 500;
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
 }
 
 h2 {
   margin: 0;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 700;
 }
 
 button {
   background-image: linear-gradient(to top, #9356dc, #ff79da);
   color: white;
+  font-size: 16px;
+  font-weight: 500;
   border: none;
   border-radius: 25px;
   padding: 12px 20px;
@@ -51,7 +51,7 @@ header {
   justify-content: center;
   align-items: center;
   position: relative;
-  padding: 30px 0 20px 0;
+  padding: 20px 0 20px 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -74,51 +74,70 @@ header {
   text-align: center;
   background: #f6f6f6;
 }
-.search-section p {
-  font: 300 24px;
-  color: #7e7e7e;
-  background-color: red;
-}
-
-.location {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+.search-section .location {
   padding: 15px 0;
   background: #eaeaea;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  justify-content: center;
 }
-.location i {
+.search-section .location i {
   color: #353535;
-  margin-right: 20px;
+  margin-right: 0px;
 }
-
-.hero {
+.search-section .location ::-moz-placeholder {
+  width: 130px;
+  border: none;
+  background-color: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  opacity: 1;
+  color: black;
+  text-align: center;
+}
+.search-section .location input, .search-section .location ::placeholder {
+  width: 130px;
+  border: none;
+  background-color: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  opacity: 1;
+  color: black;
+  text-align: center;
+}
+.search-section .hero {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 30px 60px 50px 60px;
+  padding: 40px 30px 50px 30px;
   gap: 15px;
+}
+.search-section .hero h1 {
+  margin: 0 20px;
+}
+.search-section .hero p {
+  font-size: 18px;
+  font-weight: 300;
+  color: #7e7e7e;
 }
 
 /************ section fonctionnement  ********/
 .section-fonctionnement {
-  padding: 1em;
+  padding: 50px 20px 50px 20px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
+  gap: 30px;
 }
 
 .frame {
-  width: 100%;
+  width: 97%;
   background-color: #f6f6f6;
   border-radius: 25px;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-  padding: 2em;
-  margin: 1em 0;
+  padding: 30px 0 30px 30px;
+  margin-left: 10px;
   position: relative;
   display: flex;
   align-items: center;
@@ -131,40 +150,43 @@ header {
 .frame .frame-number {
   background-color: #9356dc;
   color: white;
-  font-size: 1em;
+  font-size: 16px;
   border-radius: 50%;
-  padding: 0.5em;
-  min-width: 1.5em;
-  height: 1.5em;
+  padding: 8px;
+  height: 24px;
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
-  left: -0.75em;
+  left: -12px;
   top: 50%;
   transform: translate(0, -50%);
-}
-.frame .i-purple {
-  color: #9356dc;
 }
 .frame .i-grey {
   color: #7e7e7e;
 }
+.frame .i-purple {
+  color: #9356dc;
+}
 
 /************ section restaurants *********/
 .restaurants {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
   background-color: #f6f6f6;
-  padding: 1em;
+  padding: 50px 20px 50px 20px;
 }
 .restaurants a {
   text-decoration: none;
 }
 .restaurants .restaurant-card {
+  height: 251px;
   background-color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   overflow: hidden;
-  margin-bottom: 1em;
+  margin-bottom: 16px;
   display: flex;
   flex-direction: column;
 }
@@ -173,6 +195,7 @@ header {
 }
 .restaurants .restaurant-card .restaurant-image img {
   width: 100%;
+  height: 175px;
   display: block;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -181,26 +204,29 @@ header {
   display: none;
   background-color: #99e2d0;
   color: #008766;
-  padding: 0.25em 0.5em;
+  padding: 4px 8px;
   position: absolute;
-  top: 0.5em;
-  right: 0.5em;
+  top: 12px;
+  right: 12px;
   z-index: 10;
 }
 .restaurants .restaurant-card .restaurant-info {
-  padding: 1em;
+  padding: 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.restaurants .restaurant-card .restaurant-info .info-content h3 {
+.restaurants .restaurant-card .restaurant-info .info-content h2 {
   margin: 0;
   color: #353535;
 }
+.restaurants .restaurant-card .restaurant-info .info-content p {
+  color: black;
+}
 .restaurants .restaurant-card .restaurant-info .heart-zone {
   position: relative;
-  font-size: 1.5em;
-  cursor: pointer;
+  font-size: 24px;
+  cursor: crosshair;
 }
 .restaurants .restaurant-card .restaurant-info .heart-zone .heart-empty,
 .restaurants .restaurant-card .restaurant-info .heart-zone .heart-full {
@@ -226,8 +252,9 @@ header {
 /************ footer  ********/
 .footer {
   background-color: #353535;
-  padding: 2em;
+  padding: 32px;
   display: flex;
+  gap: 20px;
   flex-direction: column;
 }
 .footer ul {
@@ -252,10 +279,12 @@ header {
   text-align: left;
 }
 .footer .footer-text1 {
-  font: 500 16px;
+  font-size: 16px;
+  font-weight: 500;
   margin-bottom: 10px;
 }
 .footer .footer-text2 {
-  font: 400 16px;
+  font-size: 16px;
+  font-weight: 400;
   margin-bottom: 10px;
 }/*# sourceMappingURL=styles.css.map */

@@ -143,12 +143,14 @@ header {
       color: $grey-dark;
       margin-right: 0px;
     }
-    input {
+    input,
+    ::placeholder {
       width: 130px;
       border: none;
       background-color: inherit;
       font-size: 16px;
       font-weight: 500;
+      opacity: 1;
       color: black;
       text-align: center;
     }
@@ -216,7 +218,6 @@ header {
   .i-purple {
     color: $purple;
   }
-  
 }
 /************ section restaurants *********/
 
@@ -272,43 +273,43 @@ header {
           margin: 0;
           color: $grey-dark;
         }
-        p{
+        p {
           color: black;
         }
       }
       .heart-zone {
         position: relative;
         font-size: 24px;
-        cursor: pointer;
+        cursor: crosshair;
 
-        .heart-empty,
-        .heart-full {
+        .heart-checkbox {
           position: absolute;
           top: 50%;
           right: 0;
           transform: translate(0, -50%);
-          transition: opacity 0.3s ease;
+          display: none;
         }
-        .heart-full {
-          opacity: 0;
+        .heart {
+          display: block; // S'assure que le label agit comme un container bloc
+          width: 24px; // Largeur pour l'image de fond
+          height: 24px; // Hauteur pour l'image de fond
+          background-image: url("../../images/Icons/Heart-empty.png");
+          background-repeat: no-repeat;
         }
-        &:hover {
-          .heart-full {
-            opacity: 1;
-          }
-          .heart-empty {
-            opacity: 0;
-          }
+        .heart-checkbox:checked + .heart {
+          background-image: url("../../images/Icons/Heart-full.png");
+          background-repeat: no-repeat;
         }
       }
     }
   }
-  .new {
-    .new-badge {
-      display: block;
-    }
+}
+.new {
+  .new-badge {
+    display: block;
   }
 }
+
 /************ footer  ********/
 
 .footer {

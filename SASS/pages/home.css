@@ -84,12 +84,24 @@ header {
   color: #353535;
   margin-right: 0px;
 }
-.search-section .location input {
+.search-section .location ::-moz-placeholder {
   width: 130px;
   border: none;
   background-color: inherit;
   font-size: 16px;
   font-weight: 500;
+  opacity: 1;
+  color: black;
+  text-align: center;
+}
+.search-section .location input,
+.search-section .location ::placeholder {
+  width: 130px;
+  border: none;
+  background-color: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  opacity: 1;
   color: black;
   text-align: center;
 }
@@ -215,26 +227,28 @@ header {
 .restaurants .restaurant-card .restaurant-info .heart-zone {
   position: relative;
   font-size: 24px;
-  cursor: pointer;
+  cursor: crosshair;
 }
-.restaurants .restaurant-card .restaurant-info .heart-zone .heart-empty,
-.restaurants .restaurant-card .restaurant-info .heart-zone .heart-full {
+.restaurants .restaurant-card .restaurant-info .heart-zone .heart-checkbox {
   position: absolute;
   top: 50%;
   right: 0;
   transform: translate(0, -50%);
-  transition: opacity 0.3s ease;
+  display: none;
 }
-.restaurants .restaurant-card .restaurant-info .heart-zone .heart-full {
-  opacity: 0;
+.restaurants .restaurant-card .restaurant-info .heart-zone .heart {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-image: url("../../images/Icons/Heart-empty.png");
+  background-repeat: no-repeat;
 }
-.restaurants .restaurant-card .restaurant-info .heart-zone:hover .heart-full {
-  opacity: 1;
+.restaurants .restaurant-card .restaurant-info .heart-zone .heart-checkbox:checked + .heart {
+  background-image: url("../../images/Icons/Heart-full.png");
+  background-repeat: no-repeat;
 }
-.restaurants .restaurant-card .restaurant-info .heart-zone:hover .heart-empty {
-  opacity: 0;
-}
-.restaurants .new .new-badge {
+
+.new .new-badge {
   display: block;
 }
 
