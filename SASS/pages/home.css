@@ -54,18 +54,15 @@ header {
   padding: 20px 0 20px 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
-.go-back {
+header .go-back {
   display: inline-block;
   position: absolute;
   left: 0;
 }
-
-.go-back.home {
+header .go-back.home { /* ajout de la class home sur la page d'accueil uniquement, pour annuler l'affichage*/
   display: none;
 }
-
-.logo {
+header .logo {
   width: 162px;
 }
 
@@ -253,40 +250,40 @@ header {
 }
 
 /************ footer  ********/
-.footer {
+footer {
   background-color: #353535;
   padding: 32px;
   display: flex;
   gap: 20px;
   flex-direction: column;
 }
-.footer ul {
+footer ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-.footer a {
+footer a {
   text-decoration: none;
   color: white;
 }
-.footer i {
+footer i {
   color: white;
 }
-.footer .footer-logo {
+footer .footer-logo {
   font: italic 400 18px "shrikhand", cursive;
   color: white;
 }
-.footer .footer-icon {
+footer .footer-icon {
   display: inline-block;
   width: 30px;
   text-align: left;
 }
-.footer .footer-text1 {
+footer .footer-text1 {
   font-size: 16px;
   font-weight: 500;
   margin-bottom: 10px;
 }
-.footer .footer-text2 {
+footer .footer-text2 {
   font-size: 16px;
   font-weight: 400;
   margin-bottom: 10px;

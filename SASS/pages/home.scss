@@ -22,7 +22,7 @@ $font-2: "shrikhand", cursive;
 
 /**************** MIXINS ****************/
 
-@mixin button-style {
+@mixin button-mixin {
   background-image: linear-gradient(to top, #9356dc, #ff79da);
   color: white;
   font-size: 16px;
@@ -38,7 +38,30 @@ $font-2: "shrikhand", cursive;
   }
 }
 
-@mixin footer-style {
+@mixin header-mixin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 20px 0 20px 0;
+    box-shadow: $shadow-light;
+  
+  .go-back {
+    display: inline-block;
+    position: absolute;
+    left: 0;
+  }
+  .go-back.home { /* ajout de la class home sur la page d'accueil uniquement, pour annuler l'affichage*/
+    display: none;
+  }
+  .logo {
+    width: 162px;
+  }
+
+
+}
+
+@mixin footer-mixin {
   background-color: $grey-dark;
   padding: 32px;
   display: flex;
@@ -103,29 +126,15 @@ h2 {
   font-weight: 700;
 }
 button {
-  @include button-style;
+  @include button-mixin;
 }
 
 /************ header (mobile) *********/
 
-header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  padding: 20px 0 20px 0;
-  box-shadow: $shadow-light;
-}
-.go-back {
-  display: inline-block;
-  position: absolute;
-  left: 0;
-}
-.go-back.home {
-  display: none;
-}
-.logo {
-  width: 162px;
+header{
+ @include header-mixin;
+
+
 }
 
 /************ section recherches ***********/
@@ -311,7 +320,7 @@ header {
 }
 
 /************ footer  ********/
-
-.footer {
-  @include footer-style;
+footer {
+  @include footer-mixin;
 }
+
