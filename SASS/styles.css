@@ -5,16 +5,23 @@
 /*font-family*/
 /**************** MIXINS ****************/
 /**************** SCSS ****************/
-/* border-box pour tous les éléments, inclu padding et border dans la largeur/hauteur.*/
+/* remise à 0 styles par défaut pour tous les éléments + border-box inclu padding et border dans la largeur/hauteur.*/
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  text-decoration: none;
 }
 
 body {
   min-width: 375px;
   font-family: "Roboto", sans-serif;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 h1 {
@@ -27,22 +34,7 @@ h2 {
   margin: 0;
   font-size: 18px;
   font-weight: 700;
-}
-
-button {
-  background-image: linear-gradient(to top, #9356dc, #ff79da);
-  color: white;
-  font-size: 16px;
-  font-weight: 500;
-  border: none;
-  border-radius: 25px;
-  padding: 12px 20px;
-  cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-button:hover {
-  background-image: linear-gradient(to top, #af79e2, #fe9fdf);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  color: #353535;
 }
 
 /************ header (mobile) *********/
@@ -68,6 +60,7 @@ header .logo {
 
 /************ section recherches ***********/
 .search-section {
+  width: 100%;
   text-align: center;
   background: #f6f6f6;
 }
@@ -75,32 +68,25 @@ header .logo {
   padding: 15px 0;
   background: #eaeaea;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  justify-content: center;
 }
 .search-section .location i {
   color: #353535;
-  margin-right: 0px;
+}
+.search-section .location input {
+  width: 130px;
+  border: none;
+  background-color: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
 }
 .search-section .location ::-moz-placeholder {
-  width: 130px;
-  border: none;
-  background-color: inherit;
-  font-size: 16px;
-  font-weight: 500;
   opacity: 1;
   color: black;
-  text-align: center;
 }
-.search-section .location input,
 .search-section .location ::placeholder {
-  width: 130px;
-  border: none;
-  background-color: inherit;
-  font-size: 16px;
-  font-weight: 500;
   opacity: 1;
   color: black;
-  text-align: center;
 }
 .search-section .hero {
   display: flex;
@@ -116,36 +102,56 @@ header .logo {
   font-size: 18px;
   font-weight: 300;
   color: #7e7e7e;
+  margin-bottom: 15px;
+}
+.search-section .hero .button {
+  background-image: linear-gradient(to top, #9356dc, #ff79da);
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  border-radius: 25px;
+  padding: 15px 20px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-image 0.9s linear, box-shadow 0.5s ease; /*fonctionne aller et retour*/
+}
+.search-section .hero .button:hover {
+  background-image: linear-gradient(to top, #af79e2, #fe9fdf);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 /************ section fonctionnement  ********/
 .section-fonctionnement {
+  width: 100%;
   padding: 50px 20px 50px 20px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 500;
   gap: 30px;
 }
-
-.frame {
+.section-fonctionnement .zone-frame {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+}
+.section-fonctionnement .zone-frame .frame {
   width: 97%;
+  max-width: 322px;
   background-color: #f6f6f6;
-  border-radius: 25px;
+  border-radius: 20px;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-  padding: 30px 0 30px 30px;
+  padding: 26px 0 26px 1.8em;
   margin-left: 10px;
   position: relative;
   display: flex;
-  align-items: center;
+  gap: 1em;
 }
-.frame p {
-  flex: 1;
-  text-align: left;
-  margin: 0 1em;
-}
-.frame .frame-number {
+.section-fonctionnement .zone-frame .frame .frame-number {
   background-color: #9356dc;
   color: white;
   font-size: 16px;
@@ -153,32 +159,38 @@ header .logo {
   padding: 8px;
   height: 24px;
   display: flex;
-  justify-content: center;
   align-items: center;
   position: absolute;
   left: -12px;
   top: 50%;
   transform: translate(0, -50%);
 }
-.frame .i-grey {
+.section-fonctionnement .zone-frame .frame .i-grey {
   color: #7e7e7e;
 }
-.frame .i-purple {
+.section-fonctionnement .zone-frame .frame .i-purple {
   color: #9356dc;
 }
 
 /************ section restaurants *********/
 .restaurants {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 15px;
   background-color: #f6f6f6;
   padding: 50px 20px 50px 20px;
+  align-items: flex-start;
 }
-.restaurants a {
-  text-decoration: none;
+.restaurants .zone-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.restaurants .restaurant-card {
+.restaurants .zone-card .restaurant-card {
+  position: relative;
+  width: 340px;
   height: 251px;
   background-color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -188,64 +200,63 @@ header .logo {
   display: flex;
   flex-direction: column;
 }
-.restaurants .restaurant-card .restaurant-image {
+.restaurants .zone-card .restaurant-card .restaurant-image {
   position: relative;
 }
-.restaurants .restaurant-card .restaurant-image img {
+.restaurants .zone-card .restaurant-card .restaurant-image img {
   width: 100%;
   height: 175px;
+  -o-object-fit: cover;
+     object-fit: cover; /* Empêche la déformation de l'image */
   display: block;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
-.restaurants .restaurant-card .new-badge {
+.restaurants .zone-card .restaurant-card .new-badge {
   display: none;
+  font-size: 14px;
+  font-weight: 500;
+  width: 80px;
+  height: 29px;
+  text-align: center;
+  padding-top: 6px;
+  border-radius: 2px;
   background-color: #99e2d0;
   color: #008766;
-  padding: 4px 8px;
   position: absolute;
   top: 12px;
   right: 12px;
-  z-index: 10;
 }
-.restaurants .restaurant-card .restaurant-info {
+.restaurants .zone-card .restaurant-card .restaurant-info {
   padding: 16px;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  gap: 3px;
 }
-.restaurants .restaurant-card .restaurant-info .info-content h2 {
-  margin: 0;
-  color: #353535;
-}
-.restaurants .restaurant-card .restaurant-info .info-content p {
+.restaurants .zone-card .restaurant-card .restaurant-info p {
+  font-size: 17px;
+  font-weight: 300;
   color: black;
 }
-.restaurants .restaurant-card .restaurant-info .heart-zone {
-  position: relative;
-  font-size: 24px;
-  cursor: crosshair;
-}
-.restaurants .restaurant-card .restaurant-info .heart-zone .heart-checkbox {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translate(0, -50%);
+.restaurants .zone-card .restaurant-card .heart-checkbox {
   display: none;
 }
-.restaurants .restaurant-card .restaurant-info .heart-zone .heart {
-  display: block;
+.restaurants .zone-card .restaurant-card .heart {
+  position: absolute;
+  right: 15px;
+  top: 200px;
+  cursor: pointer;
   width: 24px;
   height: 24px;
   background-image: url("../../images/Icons/Heart-empty.png");
   background-repeat: no-repeat;
 }
-.restaurants .restaurant-card .restaurant-info .heart-zone .heart-checkbox:checked + .heart {
+.restaurants .zone-card .restaurant-card .heart-checkbox:checked + .heart {
   background-image: url("../../images/Icons/Heart-full.png");
   background-repeat: no-repeat;
 }
-
-.new .new-badge {
+.restaurants .zone-card .new .new-badge {
   display: block;
 }
 
@@ -287,4 +298,30 @@ footer .footer-text2 {
   font-size: 16px;
   font-weight: 400;
   margin-bottom: 10px;
-}/*# sourceMappingURL=styles.css.map */
+}
+
+/**************** MEDIA QUERIES ****************/
+@media (min-width: 768px) {
+  .section-fonctionnement .zone-frame {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.5em;
+  }
+  .restaurants .zone-card {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 2em;
+    -moz-column-gap: 50px;
+         column-gap: 50px;
+  }
+  .restaurants .zone-card .restaurant-card {
+    width: 46%;
+    height: 251px;
+    max-width: 490px;
+  }
+  .footer {
+    flex-direction: row-reverse;
+  }
+} /*fin média query*//*# sourceMappingURL=styles.css.map */

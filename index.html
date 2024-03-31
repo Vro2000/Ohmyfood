@@ -29,7 +29,9 @@
             <div class="hero">
                 <h1>Réservez le menu qui vous convient</h1>
                 <p>Découvrez des restaurants d'exception, sélectionnés par nos soins.</p>
-                <button  type="submit">Explorer nos restaurants</button>
+                <a class="button" href="#rest">Explorez nos restaurants</a>
+
+
             </div>
         </section>
 
@@ -38,7 +40,8 @@
         <section class="section-fonctionnement">
 
         <h1>Fonctionnement</h1>
-
+        <div class="zone-frame">
+      
             <div class="frame">
                 <div class="frame-number">1</div>
                 <i class="fa-solid fa-mobile-screen-button i-grey" aria-hidden="true"></i><!--aria-hidden pour indiquer "non-lu" au lecteur d'écran--> 
@@ -54,15 +57,65 @@
                 <i class="fa-solid fa-store i-purple" aria-hidden="true"></i><!--aria-hidden pour indiquer "non-lu" au lecteur d'écran--> 
                 <p>Dégustez au restaurant</p>
             </div>
+
+        </div>
+            
         </section>
         
         <!-- section restaurants    -->
-        <section class="restaurants"> 
+        <section class="restaurants"  id="rest"> 
             <h1>Restaurants</h1>
+            <div class="zone-card">
             
                 <div class="restaurant-card new"> <!-- avec la classe 'new' affiche badge "Nouveau" -->
                     <a class="restaurant-image" href="HTML/menu.html">
-                        <img src="images/restaurants/louis-hansel-shotsoflouis-qNBGVyOCY8Q-unsplash.jpg" alt="La palette du goût">
+                        <img src="images/restaurants/jay-wennington-N_Y88TWmGwA-unsplash.jpg" alt="La palette du goût">
+                        <span class="new-badge">Nouveau</span>
+                 
+                        <div class="restaurant-info">
+                            <h2>La palette du goût</h2>
+                            <p>Ménilmontant</p>
+                        </div>
+                    </a>
+                    <span class="heart-zone">
+                        <input class="heart-checkbox" type="checkbox" id="la-palette-du-gout" name="like-heart">
+                        <label class="heart" for="la-palette-du-gout"></label>
+                    </span>
+                </div>
+                <div class="restaurant-card new"> <!-- avec la classe 'new' affiche badge "Nouveau" -->
+                    <a class="restaurant-image" href="HTML/menu.html">
+                        <img src="images/restaurants/stil-u2Lp8tXIcjw-unsplash.jpg" alt="La note enchantée">
+                        <span class="new-badge">Nouveau</span>
+                 
+                        <div class="restaurant-info">
+                            <h2>La note enchantée</h2>
+                            <p>Charonne</p>
+                        </div>
+                    </a>
+                    <span class="heart-zone">
+                        <input class="heart-checkbox" type="checkbox" id="la-note-enchantee" name="like-heart">
+                        <label class="heart" for="la-note-enchantee"></label>
+                    </span>
+                </div>
+                <div class="restaurant-card"> <!-- sans la classe 'new' pas de badge "Nouveau" -->
+                    <a class="restaurant-image" href="HTML/menu.html">
+                        <img src="images/restaurants/toa-heftiba-DQKerTsQwi0-unsplash.jpg" alt="A la française">
+                        <span class="new-badge">Nouveau</span>
+                 
+                        <div class="restaurant-info">
+                            <h2>A la française</h2>
+                            <p>Cité Rouge</p>
+                        </div>
+                    </a>
+                    <span class="heart-zone">
+                        <input class="heart-checkbox" type="checkbox" id="a-la-francaise" name="like-heart">
+                        <label class="heart" for="a-la-francaise"></label>
+                    </span>
+                </div>
+
+                <div class="restaurant-card"> <!-- sans la classe 'new' pas de badge "Nouveau" -->
+                    <a class="restaurant-image" href="HTML/menu.html">
+                        <img src="images/restaurants/louis-hansel-shotsoflouis-qNBGVyOCY8Q-unsplash.jpg" alt="Le délice des sens">
                         <span class="new-badge">Nouveau</span>
                     </a>
                     <div class="restaurant-info">
@@ -75,48 +128,22 @@
                             <label class="heart" for="le-delice-des-sens"></label>
                         </span>
                     </div>
-                </div>
-
-                <div class="restaurant-card"> <!-- sans la classe 'new' pas de badge "Nouveau" -->
-                    <a class="restaurant-image" href="HTML/menu.html">
-                        <img src="images/restaurants/louis-hansel-shotsoflouis-qNBGVyOCY8Q-unsplash.jpg" alt="La palette du goût">
-                        <span class="new-badge">Nouveau</span>
-                    </a>
-                    <div class="restaurant-info">
-                        <div>
-                            <h2>Le délice des sens</h2>
-                            <p>Folie-Méricourt</p>
-                        </div>
-                        <span class="heart-zone">
-                            <input class="heart-checkbox" type="checkbox" id="le-delice-des-sens2" name="like-heart">
-                            <label class="heart" for="le-delice-des-sens2"></label>
-                        </span>
-                    </div>
                   </div>
-        
-
-
-
-
-
-
-
-            
-            <!-- idem pour les autres restaurants -->
+                </div>
         </section>
 
     </main>
 
     <!-- section footer -->
  
-    <footer class="footer">
+    <footer>
         <p class="footer-logo">ohmyfood</p>
         <nav>
             <ul>
-                <li class="footer-text1"><a href="#"><span class="footer-icon"><i class="fa-solid fa-utensils"></i></span>Proposer un restaurant</a></li>
-                <li class="footer-text1"><a href="#"><span class="footer-icon"><i class="fa-solid fa-handshake-angle"></i></span>Devenir partenaire</a></li>
-                <li class="footer-text2"><a href="#">Mentions légales</a></li>
-                <li class="footer-text2"><a href="#">Contact</a></li>
+                <li ><a href="#"><span class="footer-icon"><i class="fa-solid fa-utensils"></i></span>Proposer un restaurant</a></li>
+                <li ><a href="#"><span class="footer-icon"><i class="fa-solid fa-handshake-angle"></i></span>Devenir partenaire</a></li>
+                <li ><a href="#">Mentions légales</a></li>
+                <li ><a href="#">Contact</a></li>
             </ul>
         </nav>
     </footer>
