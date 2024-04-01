@@ -1,0 +1,143 @@
+@import 'variables-mixins.scss';
+
+/**************** SCSS ****************/
+
+/* remise à 0 styles par défaut pour tous les éléments + border-box inclu padding et border dans la largeur/hauteur.*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+  }
+  
+  body {
+    min-width: 375px;
+    font-family: $font-1;
+  }
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+  
+  h1 {
+    font-family: $font-2;
+    font-size: 28px;
+    font-weight: 400;
+    padding: 20px ;
+  }
+  h2 {
+    font-size: 16px;
+    font-weight: 300;
+    padding: 20px ;
+ 
+  }
+  h3{
+    font-size: 18px;
+    font-weight: 500;
+
+  }
+  p{
+    font-size: 15px;
+    font-weight: 300;
+    padding: 5px 0;
+  }
+  
+  /************ header (mobile) *********/
+  
+  header {
+    @include header-mixin;
+  }
+  /************ hhhhhhhhhhhh *********/
+.menu-img{
+  width: 100%;
+  height: 275px;
+  object-fit: cover; /* Empêche la déformation de l'image */
+}
+
+  .restaurant-choisi {
+    width: 90%;
+    min-width: 375px;
+    max-width: 1055px;
+    position:absolute;
+    top: -50px;
+    background-color: $grey-light;
+    border-radius: 30px 30px 0 0 ;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+
+
+
+
+  .heart-checkbox {
+    display: none;
+  }
+  .heart {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    background-image: url("../images/Icons/Heart-empty.png");
+    background-repeat: no-repeat;
+  }
+  .heart-checkbox:checked + .heart {
+    background-image: url("../images/Icons/Heart-full.png");
+    background-repeat: no-repeat;
+  }
+}
+
+.frame-menu {
+      width: 97%;
+      max-width: 634px;
+      height: 72px;
+      background-color: $grey-light;
+      border-radius: 20px;
+      box-shadow: $shadow-medium;
+      padding: 10px 0 10px 1.8em;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+
+
+      .price {
+        font-size: 15px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        position: absolute;
+        right: 15px;
+        top: 35px;
+      }
+
+}
+
+
+/**************** MEDIA QUERIES ****************/
+
+@media (min-width: 768px) {
+
+  body{
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px; 
+  }
+
+  .menu-img {
+  max-height: 383px;
+  }
+
+}
+
+
+  
+
+
+

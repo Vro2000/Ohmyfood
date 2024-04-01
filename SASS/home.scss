@@ -1,118 +1,6 @@
-/**************** VARIABLES ****************/
+@import variables-mixins.scss;
 
-/* couleurs*/
-$purple: #9356dc;
-$pink: #ff79da;
-$green-dark: #008766;
-$green-light: #99e2d0;
-$grey-light: #f6f6f6;
-$grey-searchbar: #eaeaea;
-$grey-medium: #7e7e7e;
-$grey-dark: #353535;
-$grey: #eaeaea;
 
-/*ombres*/
-$shadow-light: 0 2px 4px rgba(0, 0, 0, 0.1);
-$shadow-medium: 0px 4px 15px rgba(0, 0, 0, 0.2);
-$shadow-strong: 0 4px 8px rgba(0, 0, 0, 0.3);
-
-/*font-family*/
-$font-1: "Roboto", sans-serif;
-$font-2: "shrikhand", cursive;
-
-/**************** MIXINS ****************/
-
-@mixin header-mixin {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  padding: 20px 0 20px 0;
-  box-shadow: $shadow-light;
-
-  .go-back {
-    display: inline-block;
-    position: absolute;
-    left: 0;
-  }
-  .go-back.home {
-    /* ajout de la class home sur la page d'accueil uniquement, pour annuler l'affichage*/
-    display: none;
-  }
-  .logo {
-    width: 162px;
-  }
-}
-
-@mixin footer-mixin {
-  background-color: $grey-dark;
-  padding: 32px;
-  display: flex;
-  gap: 1.5em;
-  flex-direction: column;
-  ul {
-    list-style: none;
-
-    li {
-      margin-bottom: 10px;
-      font-size: 14px;
-
-      &:nth-child(-n + 2) {
-        font-weight: 500;
-      }
-      &:nth-child(n + 3) {
-        font-weight: 300;
-      }
-    }
-  }
-  a,
-  i,
-  .footer-logo {
-    color: white;
-  }
-
-  .footer-logo {
-    font: italic 400 16px $font-2;
-  }
-  .footer-icon {
-    display: inline-block;
-    width: 30px;
-    text-align: left;
-  }
-}
-
-@mixin button-mixin {
-  background-image: linear-gradient(to top, #9356dc, #ff79da);
-  color: white;
-  font-size: 16px;
-  font-weight: 500;
-  border: none;
-  border-radius: 25px;
-  padding: 15px 20px;
-  cursor: pointer;
-  box-shadow: $shadow-light;
-  transition: background-image 0.9s linear, box-shadow 0.5s ease; /*fonctionne aller et retour*/
-  &:hover {
-    background-image: linear-gradient(to top, #af79e2, #fe9fdf);
-    box-shadow: $shadow-strong;
-  }
-}
-
-@mixin new-badge-mixin {
-  display: none;
-  font-size: 14px;
-  font-weight: 500;
-  width: 80px;
-  height: 29px;
-  text-align: center;
-  padding-top: 6px;
-  border-radius: 2px;
-  background-color: $green-light;
-  color: $green-dark;
-  position: absolute;
-  top: 12px;
-  right: 12px;
-}
 
 /**************** SCSS ****************/
 
@@ -310,6 +198,7 @@ header {
           color: black;
         }
       }
+      
       .heart-checkbox {
         display: none;
       }
@@ -320,14 +209,15 @@ header {
         cursor: pointer;
         width: 24px;
         height: 24px;
-        background-image: url("../../images/Icons/Heart-empty.png");
+        background-image: url("../images/Icons/Heart-empty.png");
         background-repeat: no-repeat;
       }
       .heart-checkbox:checked + .heart {
-        background-image: url("../../images/Icons/Heart-full.png");
+        background-image: url("../images/Icons/Heart-full.png");
         background-repeat: no-repeat;
       }
-    }
+    
+  }
     .new {
       .new-badge {
         display: block;
