@@ -6,38 +6,109 @@
     <title>ohmyfood</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Shrikhand&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <link rel="stylesheet" href="../SASS/menu.css"> 
+    <link rel="stylesheet" href="/SASS/menu.css"> 
 </head>
 <body>
 
     <header>
-        <a href="index.html" class="go-back"><img src="../images/Icons/GoBack.png" alt="icon flèche retour à la page d'accueil"></a>
-        <img src="../images/logo/ohmyfood.png" alt="ohmyfood logo" class="logo">
+        <a href="/index.html" class="go-back"><img src="/images/Icons/GoBack.png" alt="icon flèche retour à la page d'accueil"></a>
+        <img src="/images/logo/ohmyfood.png" alt="ohmyfood logo" class="logo">
 
        
     </header>
       
     <main>
-        <img class="menu-img"  src="../images/restaurants/jay-wennington-N_Y88TWmGwA-unsplash.jpg" alt="la la-palette-du-gout">
+        <img class="menu-img"  src="/images/restaurants/jay-wennington-N_Y88TWmGwA-unsplash.jpg" alt="la la-palette-du-gout">
 
         <div class="restaurant-choisi">
-            <div>
+            <div class="en-tete">
                 <h1>La palette du goût</h1>
-                <span>
-                    <input class="heart-checkbox" type="checkbox" id="a-la-francaise" name="like-heart">
-                    <label class="heart" for="a-la-francaise"></label>
-                </span>
+                <div class="heart-zone">
+                    <input class="heart-checkbox" type="checkbox" id="la-palette-du-gout" name="like-heart">
+                    <label class=" heart-empty" for="la-palette-du-gout"><img src="/images/icons/Heart-empty.png" alt="icon coeur vide à cliquer"></label>
+                    <label class=" heart-full" for="la-palette-du-gout"><img src="/images/icons/Heart-full.png" alt="icon coeur plein à cliquer"></label>
+                </div>
             </div>
 
-            <section >
-                <h2>ENTRÉES</h2><!-- alt0201 ou &#201 unicode pour le é-->
-                <div class="frame-menu">
-                <h3>Fricassée d'escargots</h3>
-                    <p>Au piment d'Espelette</p>
-                    <div class="price">25€</div>
-                </div>
+            <section class="section-menu">
+                <h2><span class="souligne">ENTR</span>ÉES</h2><!-- alt0201 ou &#201 unicode pour le é-->
 
+                <label class="frame-menu" for="plat-1">
+                    <input type="checkbox" id="plat-1" class="menu-checkbox">
+                    <h3>Fricassée d'escargots</h3>
+                    <p>Au piment d'Espelette</p>
+                    <div class="moving-price">25€</div>
+                    <div class="background-animation"><i class="fa-solid fa-circle-check" style="color: #ffffff;"></i></div>
+               </label>
+               <label class="frame-menu" for="plat-2">
+                    <input type="checkbox" id="plat-2" class="menu-checkbox">
+                    <h3></h3>
+                    <p></p>
+                    <div class="moving-price">25€</div>
+                    <div class="background-animation"><i class="fa-solid fa-circle-check" style="color: #ffffff;"></i></div>
+               </label>
+               <label class="frame-menu" for="plat-3">
+                    <input type="checkbox" id="plat-3" class="menu-checkbox">
+                    <h3></h3>
+                    <p></p>
+                    <div class="moving-price">25€</div>
+                    <div class="background-animation"><i class="fa-solid fa-circle-check" style="color: #ffffff;"></i></div>
+                </label>
             </section>
+
+            <section class="section-menu" >
+                <h2><span class="souligne">ENTR</span>ÉES</h2><!-- alt0201 ou &#201 unicode pour le é-->
+
+                <label class="frame-menu" for="plat-4">
+                    <input type="checkbox" id="plat-4" class="menu-checkbox">
+                    <h3>Fricassée d'escargots</h3>
+                    <p>Au piment d'Espelette</p>
+                    <div class="moving-price">25€</div>
+                    <div class="background-animation"><i class="fa-solid fa-circle-check" style="color: #ffffff;"></i></div>
+               </label>
+               <label class="frame-menu" for="plat-5">
+                    <input type="checkbox" id="plat-5" class="menu-checkbox">
+                    <h3></h3>
+                    <p></p>
+                    <div class="moving-price">25€</div>
+                    <div class="background-animation"><i class="fa-solid fa-circle-check" style="color: #ffffff;"></i></div>
+               </label>
+               <label class="frame-menu" for="plat-6">
+                    <input type="checkbox" id="plat-6" class="menu-checkbox">
+                    <h3></h3>
+                    <p></p>
+                    <div class="moving-price">25€</div>
+                    <div class="background-animation"><i class="fa-solid fa-circle-check" style="color: #ffffff;"></i></div>
+                </label>
+             </section>
+
+            <section class="section-menu" >
+                <h2><span class="souligne">ENTR</span>ÉES</h2><!-- alt0201 ou &#201 unicode pour le é-->
+
+                <label class="frame-menu" for="plat-7">
+                    <input type="checkbox" id="plat-7" class="menu-checkbox">
+                    <h3>Fricassée d'escargots</h3>
+                    <p>Au piment d'Espelette</p>
+                    <div class="moving-price">25€</div>
+                    <div class="background-animation"><i class="fa-solid fa-circle-check" style="color: #ffffff;"></i></div>
+               </label>
+               <label class="frame-menu" for="plat-8">
+                    <input type="checkbox" id="plat-8" class="menu-checkbox">
+                    <h3></h3>
+                    <p></p>
+                    <div class="moving-price">25€</div>
+                    <div class="background-animation"><i class="fa-solid fa-circle-check" style="color: #ffffff;"></i></div>
+               </label>
+               <label class="frame-menu" for="plat-9">
+                    <input type="checkbox" id="plat-9" class="menu-checkbox">
+                    <h3></h3>
+                    <p></p>
+                    <div class="moving-price">25€</div>
+                    <div class="background-animation"><i class="fa-solid fa-circle-check" style="color: #ffffff;"></i></div>
+                </label>
+            </section>
+
+
         <div>
 
 

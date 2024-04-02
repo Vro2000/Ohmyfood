@@ -1,4 +1,4 @@
-@import variables-mixins.scss;
+@import 'variables-mixins.scss';
 
 
 
@@ -198,26 +198,21 @@ header {
           color: black;
         }
       }
-      
-      .heart-checkbox {
-        display: none;
-      }
-      .heart {
+      .heart-zone {
         position: absolute;
         right: 15px;
         top: 200px;
-        cursor: pointer;
-        width: 24px;
-        height: 24px;
-        background-image: url("../images/Icons/Heart-empty.png");
-        background-repeat: no-repeat;
-      }
-      .heart-checkbox:checked + .heart {
-        background-image: url("../images/Icons/Heart-full.png");
-        background-repeat: no-repeat;
-      }
+ 
+        @include animation-heart-mixin;
+      } 
     
-  }
+    }  
+     
+
+
+
+
+
     .new {
       .new-badge {
         display: block;

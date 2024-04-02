@@ -90,7 +90,7 @@ $font-2: "shrikhand", cursive;
   padding: 15px 20px;
   cursor: pointer;
   box-shadow: $shadow-light;
-  transition: background-image 0.9s linear, box-shadow 0.5s ease; /*fonctionne aller et retour*/
+  transition: background-image 1s linear, box-shadow 1s ease; /*fonctionne aller et retour*/
   &:hover {
     background-image: linear-gradient(to top, #af79e2, #fe9fdf);
     box-shadow: $shadow-strong;
@@ -111,4 +111,33 @@ $font-2: "shrikhand", cursive;
   position: absolute;
   top: 12px;
   right: 12px;
+}
+
+@mixin animation-heart-mixin {
+    .heart-checkbox {
+    display: none;
+    }
+    .heart-empty, .heart-full {
+      position: absolute;
+      right: 5px;
+      transition: opacity 1s ease;
+    }
+    .heart-empty{
+      opacity: 1;
+    }
+    .heart-full {
+       opacity: 0;
+    }
+    .heart-checkbox:checked ~ .heart-empty {
+      opacity: 0;
+    }
+    .heart-checkbox:checked ~ .heart-full {
+      opacity: 1;
+    }
+    .heart-checkbox:not(:checked) ~ .heart-empty {
+      opacity: 1;
+    }
+    .heart-checkbox:not(:checked) ~ .heart-full {
+      opacity: 0;
+    }
 }

@@ -1,5 +1,4 @@
 @charset "UTF-8";
-@import url();
 /**************** VARIABLES ****************/
 /* couleurs*/
 /*ombres*/
@@ -52,8 +51,7 @@ header .go-back {
   position: absolute;
   left: 0;
 }
-header .go-back.home {
-  /* ajout de la class home sur la page d'accueil uniquement, pour annuler l'affichage*/
+header .go-back.home { /* ajout de la class home sur la page d'accueil uniquement, pour annuler l'affichage flèche*/
   display: none;
 }
 header .logo {
@@ -118,7 +116,7 @@ header .logo {
   padding: 15px 20px;
   cursor: pointer;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: background-image 0.9s linear, box-shadow 0.5s ease; /*fonctionne aller et retour*/
+  transition: background-image 1s linear, box-shadow 1s ease; /*fonctionne aller et retour*/
 }
 .search-section .hero .button:hover {
   background-image: linear-gradient(to top, #af79e2, #fe9fdf);
@@ -243,22 +241,36 @@ header .logo {
   font-weight: 300;
   color: black;
 }
-.restaurants .zone-card .restaurant-card .heart-checkbox {
-  display: none;
-}
-.restaurants .zone-card .restaurant-card .heart {
+.restaurants .zone-card .restaurant-card .heart-zone {
   position: absolute;
   right: 15px;
   top: 200px;
-  cursor: url("../images/Icons/Heart-empty.png"), auto;
-  width: 24px;
-  height: 24px;
-  background-image: url("../images/Icons/Heart-empty.png");
-  background-repeat: no-repeat;
 }
-.restaurants .zone-card .restaurant-card .heart-checkbox:checked + .heart {
-  background-image: url("../images/Icons/Heart-full.png");
-  background-repeat: no-repeat;
+.restaurants .zone-card .restaurant-card .heart-zone .heart-checkbox {
+  display: none;
+}
+.restaurants .zone-card .restaurant-card .heart-zone .heart-empty, .restaurants .zone-card .restaurant-card .heart-zone .heart-full {
+  position: absolute;
+  right: 5px;
+  transition: opacity 1s ease;
+}
+.restaurants .zone-card .restaurant-card .heart-zone .heart-empty {
+  opacity: 1;
+}
+.restaurants .zone-card .restaurant-card .heart-zone .heart-full {
+  opacity: 0;
+}
+.restaurants .zone-card .restaurant-card .heart-zone .heart-checkbox:checked ~ .heart-empty {
+  opacity: 0;
+}
+.restaurants .zone-card .restaurant-card .heart-zone .heart-checkbox:checked ~ .heart-full {
+  opacity: 1;
+}
+.restaurants .zone-card .restaurant-card .heart-zone .heart-checkbox:not(:checked) ~ .heart-empty {
+  opacity: 1;
+}
+.restaurants .zone-card .restaurant-card .heart-zone .heart-checkbox:not(:checked) ~ .heart-full {
+  opacity: 0;
 }
 .restaurants .zone-card .new .new-badge {
   display: block;

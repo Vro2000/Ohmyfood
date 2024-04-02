@@ -1,143 +1,181 @@
-@import 'variables-mixins.scss';
+@import "variables-mixins.scss";
 
 /**************** SCSS ****************/
 
 /* remise à 0 styles par défaut pour tous les éléments + border-box inclu padding et border dans la largeur/hauteur.*/
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-  }
-  
-  body {
-    min-width: 375px;
-    font-family: $font-1;
-  }
-  main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-  }
-  
-  h1 {
-    font-family: $font-2;
-    font-size: 28px;
-    font-weight: 400;
-    padding: 20px ;
-  }
-  h2 {
-    font-size: 16px;
-    font-weight: 300;
-    padding: 20px ;
- 
-  }
-  h3{
-    font-size: 18px;
-    font-weight: 500;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
 
-  }
-  p{
-    font-size: 15px;
-    font-weight: 300;
-    padding: 5px 0;
-  }
-  
-  /************ header (mobile) *********/
-  
-  header {
-    @include header-mixin;
-  }
-  /************ hhhhhhhhhhhh *********/
-.menu-img{
+body {
+  min-width: 375px;
+  font-family: $font-1;
+}
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+h1 {
+  font-family: $font-2;
+  font-size: 28px;
+  font-weight: 400;
+  padding: 20px;
+}
+h2 {
+  font-size: 16px;
+  font-weight: 300;
+  padding-bottom: 10px;
+}
+h3 {
+  font-size: 18px;
+  font-weight: 500;
+}
+p {
+  font-size: 15px;
+  font-weight: 300;
+  padding: 5px 0;
+}
+
+/************ header (mobile) *********/
+
+header {
+  @include header-mixin;
+}
+/************  hero image   *********/
+.menu-img {
   width: 100%;
   height: 275px;
   object-fit: cover; /* Empêche la déformation de l'image */
 }
 
-  .restaurant-choisi {
-    width: 90%;
-    min-width: 375px;
-    max-width: 1055px;
-    position:absolute;
-    top: -50px;
-    background-color: $grey-light;
-    border-radius: 30px 30px 0 0 ;
-    position: relative;
+.restaurant-choisi {
+  width: 90%;
+  min-width: 375px;
+  max-width: 1055px;
+  position: absolute;
+  top: -50px;
+  background-color: $grey-light;
+  border-radius: 30px 30px 0 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  /************ zone titre    *********/
+  .heart-zone {
+    position: absolute;
+    right: 40px;
+    top: 30px;
+
+    @include animation-heart-mixin;
+  }
+
+  /************  section menus   *********/
+  .section-menu {
     display: flex;
     flex-direction: column;
+    gap: 15px;
 
-
-
-
-
-  .heart-checkbox {
-    display: none;
-  }
-  .heart {
-    position: absolute;
-    right: 30px;
-    top: 30px;
-    cursor: pointer;
-    width: 24px;
-    height: 24px;
-    background-image: url("../images/Icons/Heart-empty.png");
-    background-repeat: no-repeat;
-  }
-  .heart-checkbox:checked + .heart {
-    background-image: url("../images/Icons/Heart-full.png");
-    background-repeat: no-repeat;
-  }
-}
-
-.frame-menu {
+    .souligne {
+      border-bottom: 3px solid $green-light;
+      padding-bottom: 4px;
+    }
+    h2,
+    .frame-menu {
       width: 97%;
       max-width: 634px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-top: 20px;
+    }
+
+    .frame-menu {
       height: 72px;
       background-color: $grey-light;
       border-radius: 20px;
       box-shadow: $shadow-medium;
       padding: 10px 0 10px 1.8em;
-      margin-left: auto;
-      margin-right: auto;
       position: relative;
       display: flex;
       flex-direction: column;
 
+      /************* animation price ************/
 
-      .price {
-        font-size: 15px;
-        font-weight: 700;
-        display: flex;
-        align-items: center;
+      .menu-checkbox {
+        /* Cache la case à cocher */
         position: absolute;
-        right: 15px;
-        top: 35px;
+        opacity: 0;
       }
 
-}
+      .moving-price {
+        font-size: 15px;
+        font-weight: 700;
+        position: absolute;
+        right: 15px;
+        top: 40px;
+        transition: transform 0.5s ease;
+      }
 
+      .background-animation {
+        position: absolute;
+        top: 0;
+        right: 0; /* Commence du côté droit */
+        width: 0px; /* Commence sans largeur */
+        height: 100%;
+        background-color: $green-light;
+        border-radius: 0 20px 20px 0;
+        color: $green-light; /* pour l'icone*/
+        font-size: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden; /* pour l'icone*/
+        transition: width 0.5s;
+      }
+
+      .menu-checkbox:checked ~ .background-animation {
+        width: 60px;
+      }
+      .menu-checkbox:checked ~ .moving-price {
+        transform: translateX(-60px); /* Déplace le prix de la même valeur que background */
+      }
+    }
+  }
+}
 
 /**************** MEDIA QUERIES ****************/
 
 @media (min-width: 768px) {
-
-  body{
+  body {
     max-width: 1440px;
     margin-left: auto;
     margin-right: auto;
-    padding: 0 20px; 
+    padding: 0 20px;
+  }
+  .menu-img {
+    max-height: 383px;
   }
 
-  .menu-img {
-  max-height: 383px;
+  .en-tete {
+    display: flex;
+    justify-content: center;
+
+    h1{
+      width: auto;
+      margin-right: 30px;
+    }
+    .heart-zone {
+      position: relative;
+      right: auto; 
+    }
   }
+
+
+
 
 }
-
-
-  
-
-
-
