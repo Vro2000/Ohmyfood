@@ -85,6 +85,7 @@ header {
     }
     .button {
       @include button-mixin;
+      padding: 15px 20px;
     }
   }
 }
@@ -207,11 +208,6 @@ header {
       } 
     
     }  
-     
-
-
-
-
 
     .new {
       .new-badge {
@@ -254,6 +250,7 @@ footer {
   }
   footer {
     flex-direction: row-reverse;
+    align-items: center;
 
     ul {
       display: flex;

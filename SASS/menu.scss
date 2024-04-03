@@ -66,6 +66,15 @@ header {
   display: flex;
   flex-direction: column;
 
+  &::after { /* crée une zone de 50px en bas pour compenser le décalage du haut*/
+    content: ""; /* permet au navigateur de générer un pseudo élement puisqu'il n'y a pas de contenu coté html*/
+    position: absolute; /* sinon le pseudo élément se placerait dans le flux après le décalage de son parent*/
+    width: 100%; /* sur la même largeur que son parent*/
+    bottom: -50px; /* décalage de 50 vers le bas*/
+    height: 50px; /* Hauteur pour compenser le décalage */
+    background-color: inherit; /* Utilise le même fond que l'élément parent */
+}
+
   /************ zone titre    *********/
   .heart-zone {
     position: absolute;
@@ -80,13 +89,13 @@ header {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    padding: 5px;
 
     .souligne {
       border-bottom: 3px solid $green-light;
       padding-bottom: 4px;
     }
-    h2,
-    .frame-menu {
+    h2, .frame-menu {
       width: 97%;
       max-width: 634px;
       margin-left: auto;
@@ -99,17 +108,26 @@ header {
       background-color: $grey-light;
       border-radius: 20px;
       box-shadow: $shadow-medium;
-      padding: 10px 0 10px 1.8em;
+      padding: 14px 0 10px 1em;
       position: relative;
       display: flex;
       flex-direction: column;
 
+      
+
       /************* animation price ************/
 
-      .menu-checkbox {
-        /* Cache la case à cocher */
+      .menu-checkbox { /* Cache la case à cocher */
         position: absolute;
         opacity: 0;
+      }
+
+      h3, p { /* Ajout ellipsis*/
+        width: 87%;
+        white-space: nowrap; /* Empêche le texte de passer à la ligne suivante */
+        overflow: hidden; /* Cache le contenu qui dépasse de la div */
+        text-overflow: ellipsis; /* Ajoute des points de suspension si le texte dépasse */
+        transition: width 0.5s;
       }
 
       .moving-price {
@@ -144,10 +162,30 @@ header {
       .menu-checkbox:checked ~ .moving-price {
         transform: translateX(-60px); /* Déplace le prix de la même valeur que background */
       }
+      .menu-checkbox:checked ~ h3,
+      .menu-checkbox:checked ~ p {
+
+        width: calc(87% - 60px);
+
+      }
+
+      
     }
   }
-}
 
+
+  .button-commander {
+    @include button-mixin;
+    margin: 40px auto 10px auto;
+    padding: 15px 60px;
+ 
+  }
+}
+/**************** footer ****************/
+footer {
+  @include footer-mixin;
+
+}
 /**************** MEDIA QUERIES ****************/
 
 @media (min-width: 768px) {
@@ -175,7 +213,26 @@ header {
     }
   }
 
+  footer {
+    flex-direction: row-reverse;
+    align-items: center;
 
+    ul {
+      display: flex;
+      flex-direction: row;
+      gap: 12px;
+
+      li {
+        &:nth-child(2) {
+          margin-right: 2em; /* Espacement après le deuxième élément*/
+        }
+
+        &:nth-child(4) {
+          margin-right: 3em; /* Espacement après le quatrième élément*/
+        }
+      }
+    }
+  }
 
 
 }

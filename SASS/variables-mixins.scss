@@ -45,14 +45,15 @@ $font-2: "shrikhand", cursive;
 
 @mixin footer-mixin {
   background-color: $grey-dark;
-  padding: 32px;
+  padding: 30px 30px;
   display: flex;
-  gap: 1.5em;
+  gap: 15px;
   flex-direction: column;
   ul {
     list-style: none;
 
     li {
+      margin-top: 10px;
       margin-bottom: 10px;
       font-size: 14px;
 
@@ -64,12 +65,9 @@ $font-2: "shrikhand", cursive;
       }
     }
   }
-  a,
-  i,
-  .footer-logo {
+  a, i, .footer-logo {
     color: white;
   }
-
   .footer-logo {
     font: italic 400 16px $font-2;
   }
@@ -87,7 +85,6 @@ $font-2: "shrikhand", cursive;
   font-weight: 500;
   border: none;
   border-radius: 25px;
-  padding: 15px 20px;
   cursor: pointer;
   box-shadow: $shadow-light;
   transition: background-image 1s linear, box-shadow 1s ease; /*fonctionne aller et retour*/

@@ -113,10 +113,10 @@ header .logo {
   font-weight: 500;
   border: none;
   border-radius: 25px;
-  padding: 15px 20px;
   cursor: pointer;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: background-image 1s linear, box-shadow 1s ease; /*fonctionne aller et retour*/
+  padding: 15px 20px;
 }
 .search-section .hero .button:hover {
   background-image: linear-gradient(to top, #af79e2, #fe9fdf);
@@ -279,15 +279,16 @@ header .logo {
 /************ footer  ********/
 footer {
   background-color: #353535;
-  padding: 32px;
+  padding: 30px 30px;
   display: flex;
-  gap: 1.5em;
+  gap: 15px;
   flex-direction: column;
 }
 footer ul {
   list-style: none;
 }
 footer ul li {
+  margin-top: 10px;
   margin-bottom: 10px;
   font-size: 14px;
 }
@@ -297,9 +298,7 @@ footer ul li:nth-child(-n+2) {
 footer ul li:nth-child(n+3) {
   font-weight: 300;
 }
-footer a,
-footer i,
-footer .footer-logo {
+footer a, footer i, footer .footer-logo {
   color: white;
 }
 footer .footer-logo {
@@ -334,6 +333,7 @@ footer .footer-icon {
   }
   footer {
     flex-direction: row-reverse;
+    align-items: center;
   }
   footer ul {
     display: flex;
