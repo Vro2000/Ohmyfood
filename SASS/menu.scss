@@ -73,7 +73,7 @@ header {
     bottom: -50px; /* décalage de 50 vers le bas*/
     height: 50px; /* Hauteur pour compenser le décalage */
     background-color: inherit; /* Utilise le même fond que l'élément parent */
-}
+  }
 
   /************ zone titre    *********/
   .heart-zone {
@@ -82,9 +82,49 @@ header {
     top: 30px;
 
     @include animation-heart-mixin;
+
+
+
+
   }
+  /************  sandbox animation apparition   *********/
+  
+  .container {
+    // Sélectionne tous les .animated-section à l'intérieur de .container
+    .animated-section {
+      opacity: 0; // Départ invisible
+      animation: fadeInOpacity 0.5s forwards; // Applique l'animation
+    }
+  
+    // Utilise une boucle pour assigner un délai d'animation unique à chaque .animated-section
+    $totalSections: 6; // Total des sections à animer
+    @for $i from 1 through $totalSections {
+      // Calcul du délai pour chaque section
+      $delay: ($i - 1) * 0.5s;
+  
+      // N-ème enfant de n'importe quel niveau à l'intérieur de .container
+      > div .animated-section:nth-of-type(#{$i}) {
+        animation-delay: $delay; // Applique le délai calculé
+      }
+    }
+  }
+  
+  @keyframes fadeInOpacity {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  
+  
+  
+  
+ 
+  
+
 
   /************  section menus   *********/
+  
+
   .section-menu {
     display: flex;
     flex-direction: column;
@@ -112,8 +152,6 @@ header {
       position: relative;
       display: flex;
       flex-direction: column;
-
-      
 
       /************* animation price ************/
 
@@ -168,12 +206,30 @@ header {
         width: calc(87% - 60px);
 
       }
-
-      
     }
+    /**************animation apparition ****************/
+    .appearance {
+      opacity: 0;
+      will-change: opacity;
+      animation: fadeInOpacity 0s forwards;
+    }
+  
+   
+    
+    /*@for $i from 1 through 5 {
+      .appearance:nth-child(#{$i}) {
+        animation-delay: $i * 0.4s;
+      }
+    }*/
   }
-
-
+  
+  @keyframes fadeInOpacity {
+    from {opacity: 0; }
+    to {opacity: 1; }
+  }
+  
+/**************** bouton commander ****************/
+  
   .button-commander {
     @include button-mixin;
     margin: 40px auto 10px auto;
