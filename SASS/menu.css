@@ -90,9 +90,7 @@ header .logo {
   display: flex;
   flex-direction: column;
   /************ zone titre    *********/
-  /************  sandbox animation apparition   *********/
   /************  section menus   *********/
-  /**************** bouton commander ****************/
 }
 .restaurant-choisi::after { /* crée une zone de 50px en bas pour compenser le décalage du haut*/
   content: ""; /* permet au navigateur de générer un pseudo élement puisqu'il n'y a pas de contenu coté html*/
@@ -138,8 +136,6 @@ header .logo {
   flex-direction: column;
   gap: 15px;
   padding: 5px;
-  /**************animation apparition ****************/
-  /* Boucle pour générer des délais d'animation uniques*/
 }
 .restaurant-choisi .section-menu .souligne {
   border-bottom: 3px solid #99e2d0;
@@ -207,34 +203,6 @@ header .logo {
 .restaurant-choisi .section-menu .frame-menu .menu-checkbox:checked ~ h3,
 .restaurant-choisi .section-menu .frame-menu .menu-checkbox:checked ~ p {
   width: calc(87% - 60px);
-}
-.restaurant-choisi .section-menu .appearance {
-  opacity: 0;
-  will-change: opacity;
-  animation: fadeInOpacity 0s forwards;
-}
-.restaurant-choisi .section-menu .appearance:nth-child(1) {
-  animation-delay: 0.4s;
-}
-.restaurant-choisi .section-menu .appearance:nth-child(2) {
-  animation-delay: 0.8s;
-}
-.restaurant-choisi .section-menu .appearance:nth-child(3) {
-  animation-delay: 1.2s;
-}
-.restaurant-choisi .section-menu .appearance:nth-child(4) {
-  animation-delay: 1.6s;
-}
-.restaurant-choisi .section-menu .appearance:nth-child(5) {
-  animation-delay: 2s;
-}
-@keyframes fadeInOpacity {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
 }
 .restaurant-choisi .button-commander {
   background-image: linear-gradient(to top, #9356dc, #ff79da);
