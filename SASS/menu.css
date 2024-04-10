@@ -136,6 +136,8 @@ header .logo {
   flex-direction: column;
   gap: 15px;
   padding: 5px;
+  /************* animation appearance ************/
+  /* Applique un délai d'animation aux enfants de section-menu dans l'ordre d'apparition*/
 }
 .restaurant-choisi .section-menu .souligne {
   border-bottom: 3px solid #99e2d0;
@@ -204,6 +206,54 @@ header .logo {
 .restaurant-choisi .section-menu .frame-menu .menu-checkbox:checked ~ p {
   width: calc(87% - 60px);
 }
+.restaurant-choisi .section-menu .appear {
+  opacity: 0;
+  animation: fadeInOpacity 0.5s forwards;
+}
+.restaurant-choisi .section-menu:nth-child(2) .appear:nth-child(1) {
+  animation-delay: 0s;
+}
+.restaurant-choisi .section-menu:nth-child(2) .appear:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.restaurant-choisi .section-menu:nth-child(2) .appear:nth-child(3) {
+  animation-delay: 0.4s;
+}
+.restaurant-choisi .section-menu:nth-child(2) .appear:nth-child(4) {
+  animation-delay: 0.6s;
+}
+.restaurant-choisi .section-menu:nth-child(3) .appear:nth-child(1) {
+  animation-delay: 0.8s;
+}
+.restaurant-choisi .section-menu:nth-child(3) .appear:nth-child(2) {
+  animation-delay: 1s;
+}
+.restaurant-choisi .section-menu:nth-child(3) .appear:nth-child(3) {
+  animation-delay: 1.2s;
+}
+.restaurant-choisi .section-menu:nth-child(3) .appear:nth-child(4) {
+  animation-delay: 1.4s;
+}
+.restaurant-choisi .section-menu:nth-child(4) .appear:nth-child(1) {
+  animation-delay: 1.6s;
+}
+.restaurant-choisi .section-menu:nth-child(4) .appear:nth-child(2) {
+  animation-delay: 1.8s;
+}
+.restaurant-choisi .section-menu:nth-child(4) .appear:nth-child(3) {
+  animation-delay: 2s;
+}
+.restaurant-choisi .section-menu:nth-child(4) .appear:nth-child(4) {
+  animation-delay: 2.2s;
+}
+@keyframes fadeInOpacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 .restaurant-choisi .button-commander {
   background-image: linear-gradient(to top, #9356dc, #ff79da);
   color: white;
@@ -227,7 +277,7 @@ footer {
   background-color: #353535;
   padding: 30px 30px;
   display: flex;
-  gap: 15px;
+  gap: 13px;
   flex-direction: column;
 }
 footer ul {
@@ -236,24 +286,30 @@ footer ul {
 footer ul li {
   margin-top: 10px;
   margin-bottom: 10px;
-  font-size: 14px;
+  font-size: 16px;
 }
 footer ul li:nth-child(-n+2) {
-  font-weight: 500;
+  font-weight: 400;
 }
 footer ul li:nth-child(n+3) {
   font-weight: 300;
 }
-footer a, footer i, footer .footer-logo {
+footer a, footer i {
   color: white;
 }
-footer .footer-logo {
-  font: italic 400 16px "shrikhand", cursive;
+footer i {
+  font-size: 12px;
 }
 footer .footer-icon {
   display: inline-block;
-  width: 30px;
-  text-align: left;
+  width: 20px;
+}
+footer #footer-logo {
+  width: 96px;
+  height: auto;
+}
+footer svg path {
+  fill: #ffffff;
 }
 
 /**************** MEDIA QUERIES ****************/

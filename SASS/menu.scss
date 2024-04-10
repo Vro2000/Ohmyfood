@@ -42,6 +42,7 @@ p {
   padding: 5px 0;
 }
 
+
 /************ header (mobile) *********/
 
 header {
@@ -83,7 +84,7 @@ header {
 
     @include animation-heart-mixin;
   }
-
+ 
   /************  section menus   *********/
   .section-menu {
     display: flex;
@@ -168,10 +169,38 @@ header {
         width: calc(87% - 60px);
 
       }
-
-      
     }
+    /************* animation appearance ************/
+
+      .appear {
+        opacity: 0;
+        animation: fadeInOpacity 0.5s forwards;
+      }
+     
+      /* Applique un délai d'animation aux enfants de section-menu dans l'ordre d'apparition*/
+      &:nth-child(2) .appear:nth-child(1) { animation-delay: 0s; }
+      &:nth-child(2) .appear:nth-child(2) { animation-delay: 0.2s; }
+      &:nth-child(2) .appear:nth-child(3) { animation-delay: 0.4s; }
+      &:nth-child(2) .appear:nth-child(4) { animation-delay: 0.6s; }
+     
+      &:nth-child(3) .appear:nth-child(1) { animation-delay: 0.8s; }
+      &:nth-child(3) .appear:nth-child(2) { animation-delay: 1s; }
+      &:nth-child(3) .appear:nth-child(3) { animation-delay: 1.2s; }
+      &:nth-child(3) .appear:nth-child(4) { animation-delay: 1.4s; }
+
+
+      &:nth-child(4) .appear:nth-child(1) { animation-delay: 1.6s; }
+      &:nth-child(4) .appear:nth-child(2) { animation-delay: 1.8s; }
+      &:nth-child(4) .appear:nth-child(3) { animation-delay: 2s; }
+      &:nth-child(4) .appear:nth-child(4) { animation-delay: 2.2s; }
+  
   }
+
+  @keyframes fadeInOpacity {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
 
 
   .button-commander {

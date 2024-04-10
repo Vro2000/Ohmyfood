@@ -1,0 +1,100 @@
+@charset "UTF-8";
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: Shrikhand;
+  font-size: 10px;
+  color: white;
+}
+
+.loader-screen {
+  position: relative;
+  width: 100%;
+  height: 250px;
+}
+.loader-screen::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #99E2D0;
+  animation: shrink-line 5s infinite linear;
+}
+
+@keyframes shrink-line {
+  0% {
+    left: 70px;
+    width: 100%;
+  }
+  100% {
+    left: 100%;
+    width: 0;
+  }
+}
+.loader {
+  position: absolute;
+  bottom: 0%;
+  left: 0;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, #99E2D0, #9356DC, #9356DC, #99E2D0, #9356DC);
+  background-repeat: no-repeat;
+  animation: loader-move 5s infinite linear, loader-gradient-fade 3s infinite, loader-spin 3s cubic-bezier(1, 0.4, 0.4, 0.6) infinite;
+}
+.loader .toque {
+  position: absolute;
+  transform: rotate(-70deg);
+  left: -20px;
+  width: 40px;
+  z-index: -10;
+}
+.loader .logo {
+  position: absolute;
+  left: 24px;
+  top: 35px;
+  width: 70px;
+}
+
+@keyframes loader-move {
+  0% {
+    left: 0; /* Départ de la gauche */
+  }
+  100% {
+    left: calc(100% - 40px); /* Va à droite, moins la largeur du loader */
+  }
+}
+@keyframes loader-gradient-fade {
+  0% {
+    background-size: 100% 100%;
+    background-position: center;
+  }
+  50% {
+    background-size: 300% 100%;
+    background-position: center;
+  }
+  100% {
+    background-size: 100% 100%;
+    background-position: center;
+  }
+}
+/* Keyframes pour l'animation de rotation */
+@keyframes loader-spin {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+@media (min-width: 768px) {
+  .loader-screen::before {
+    animation: shrink-line 10s infinite linear;
+  }
+  .loader {
+    animation: loader-move 10s infinite linear, loader-gradient-fade 5s infinite, loader-spin 5s infinite linear;
+  }
+}/*# sourceMappingURL=loader.css.map */

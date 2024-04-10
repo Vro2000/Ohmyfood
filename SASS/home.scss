@@ -1,4 +1,5 @@
 @import 'variables-mixins.scss';
+@import 'loader.scss';
 
 
 
@@ -15,6 +16,7 @@
 body {
   min-width: 375px;
   font-family: $font-1;
+ 
 }
 main {
   display: flex;
@@ -34,7 +36,7 @@ h2 {
   color: $grey-dark;
 }
 
-/************ header (mobile) *********/
+/************ header *********/
 
 header {
   @include header-mixin;
@@ -250,20 +252,21 @@ footer {
   }
   footer {
     flex-direction: row-reverse;
-    align-items: center;
 
-    ul {
+     ul {
       display: flex;
       flex-direction: row;
-      gap: 12px;
+      gap: 13px;
 
       li {
+        font-size: 15px;
+
         &:nth-child(2) {
           margin-right: 2em; /* Espacement après le deuxième élément*/
         }
 
         &:nth-child(4) {
-          margin-right: 3em; /* Espacement après le quatrième élément*/
+          margin-right: 2em; /* Espacement après le quatrième élément*/
         }
       }
     }

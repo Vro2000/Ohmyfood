@@ -47,7 +47,7 @@ $font-2: "shrikhand", cursive;
   background-color: $grey-dark;
   padding: 30px 30px;
   display: flex;
-  gap: 15px;
+  gap: 13px;
   flex-direction: column;
   ul {
     list-style: none;
@@ -55,26 +55,32 @@ $font-2: "shrikhand", cursive;
     li {
       margin-top: 10px;
       margin-bottom: 10px;
-      font-size: 14px;
+      font-size: 16px;
 
       &:nth-child(-n + 2) {
-        font-weight: 500;
+        font-weight: 400;
       }
       &:nth-child(n + 3) {
         font-weight: 300;
       }
     }
   }
-  a, i, .footer-logo {
+  a, i {
     color: white;
   }
-  .footer-logo {
-    font: italic 400 16px $font-2;
+  i {
+   font-size: 12px;
   }
   .footer-icon {
     display: inline-block;
-    width: 30px;
-    text-align: left;
+    width: 20px;
+  }
+  #footer-logo {
+    width: 96px;
+    height: auto;
+  }
+  svg path {
+    fill: #ffffff;
   }
 }
 
