@@ -1,0 +1,270 @@
+@import "variables-mixins.scss";
+
+// remise à 0 styles par défaut pour tous les éléments 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+body {
+  min-width: 375px;
+  font-family: $font-1;
+}
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+h1 {
+  font-family: $font-2;
+  font-size: 28px;
+  font-weight: 400;
+  padding: 20px;
+}
+h2 {
+  font-size: 16px;
+  font-weight: 300;
+  padding-bottom: 10px;
+}
+a{
+  color: black;
+}
+
+/************ header *********/
+
+header {
+  @include header-mixin;
+}
+
+.banniere {
+  width: 100%;
+  height: 275px;
+  overflow: hidden;
+  display: flex;
+
+   img {
+    width: 100%;
+    object-fit: cover;
+    object-position: center 60%;
+  }
+}
+
+.restaurant-choisi {
+  width: 90%;
+  min-width: 375px;
+  max-width: 1055px;
+  top: -50px;
+  background-color: $grey-light;
+  border-radius: 30px 30px 0 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  &::after { // crée une zone de 50px en bas pour compenser le décalage du haut
+    content: ""; 
+    position: absolute;
+    width: 100%; 
+    bottom: -50px; // décalage de 50 vers le bas
+    height: 50px; // Hauteur pour compenser le décalage
+    background-color: inherit;
+  }
+
+      /************ zone titre *********/
+  .heart-zone {
+    position: absolute;
+    right: 40px;
+    top: 30px;
+
+    @include animation-heart-mixin;
+  }
+      /************  section menus   *********/
+  .section-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 5px;
+
+    .souligne {
+      border-bottom: 3px solid $green-light;
+      padding-bottom: 4px;
+    }
+    h2, .frame-menu {
+      width: 97%;
+      max-width: 634px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-top: 20px;
+    }
+    .frame-menu {
+      height: 72px;
+      background-color: $grey-light;
+      border-radius: 20px;
+      box-shadow: $shadow-medium;
+      padding: 14px 0 10px 1em;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+
+      /************* animation price ************/
+
+      .menu-checkbox { // Cache la case à cocher
+        position: absolute;
+        opacity: 0;
+      }
+      
+        label {
+          font-size: 18px;
+          font-weight: 600;
+          cursor: pointer;
+          z-index: 1; //la zone cliquable label, au dessus du prix et de la coche
+          width: 100%; //toute la largeur de la div est cliquable
+          padding-right: 60px; //le texte n'empiète pas sur le prix
+          span {
+            width: 100%;
+            display: block;
+            font-size: 15px;
+            font-weight: 300;
+            padding: 5px 0;
+          }
+        }
+          label, span{
+          white-space: nowrap; // pour ellipsis, Empêche le texte de passer à la ligne suivante
+          overflow: hidden; // Cache le contenu qui dépasse de la div
+          text-overflow: ellipsis; // Ajoute des points de suspension si le texte dépasse
+          transition: width 0.5s;
+          }
+        
+        .moving-price {
+          font-size: 15px;
+          font-weight: 700;
+          position: absolute;
+          right: 15px;
+          top: 40px;
+          transition: transform 0.1s linear;
+        }
+
+        .checkbox-animation {
+          position: absolute;
+          top: 0;
+          right: 0; // Commence du côté droit
+          width: 0px; // Commence sans largeur
+          height: 100%;
+          border-radius: 0 20px 20px 0;
+          background-color: $green-light;
+          color: $green-light; 
+          font-size: 24px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden; //pour l'icone
+          transition: width 0.1s linear;
+        }
+      .menu-checkbox:checked ~ .checkbox-animation { // ~ pour tous les frères de menu-checkbox qui ont la class checkbox-animation
+        width: 60px;
+      }
+      .menu-checkbox:checked ~ .moving-price {
+        transform: translateX(-60px); // Déplace le prix de la même valeur que checkbox-animation
+      }
+      .menu-checkbox:checked ~ label { 
+        padding-right: 120px;  // redéfini la taille pour l'ellipsis
+      }
+      
+    }
+  
+    /************* animation appear ************/
+
+      .appear {
+        opacity: 0;
+        animation: fadeInOpacity 1s forwards; // forwards conserve l'état final de l'animation
+      }
+       /* Applique un délai d'animation aux enfants de section-menu dans l'ordre d'apparition*/
+      &:nth-child(2) .appear:nth-child(1) { animation-delay: 0s; }
+      &:nth-child(2) .appear:nth-child(2) { animation-delay: 0.2s; }
+      &:nth-child(2) .appear:nth-child(3) { animation-delay: 0.4s; }
+      &:nth-child(2) .appear:nth-child(4) { animation-delay: 0.6s; }
+      &:nth-child(2) .appear:nth-child(5) { animation-delay: 0.7s; }
+     
+      &:nth-child(3) .appear:nth-child(1) { animation-delay: 0.8s; }
+      &:nth-child(3) .appear:nth-child(2) { animation-delay: 1s; }
+      &:nth-child(3) .appear:nth-child(3) { animation-delay: 1.2s; }
+      &:nth-child(3) .appear:nth-child(4) { animation-delay: 1.4s; }
+
+      &:nth-child(4) .appear:nth-child(1) { animation-delay: 1.6s; }
+      &:nth-child(4) .appear:nth-child(2) { animation-delay: 1.8s; }
+      &:nth-child(4) .appear:nth-child(3) { animation-delay: 2s; }
+      &:nth-child(4) .appear:nth-child(4) { animation-delay: 2.2s; }
+  }
+
+  @keyframes fadeInOpacity {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .button-commander {
+    @include button-mixin;
+    margin: 40px auto 10px auto;
+    padding: 15px 60px;
+  }
+}
+
+/**************** footer ****************/
+footer {
+  @include footer-mixin;
+}
+
+/**************** MEDIA QUERIES ****************/
+
+@media (min-width: 768px) {
+  body {
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+   }
+
+   .banniere {
+    height: 383px;
+  }
+
+  .en-tete {
+    display: flex;
+    justify-content: center;
+
+    h1{
+      width: auto;
+      margin-right: 30px;
+    }
+    .heart-zone {
+      position: relative;
+      right: auto; 
+    }
+  }
+
+  footer {
+    flex-direction: row-reverse;
+
+    ul {
+      display: flex;
+      flex-direction: row;
+      gap: 15px;
+
+      li {
+        font-size: 15px;
+        &:nth-child(2) {margin-right: 1.5em;}
+        &:nth-child(4) {margin-right: 1.5em;}
+      }
+    }
+  }
+
+   /* Active les animations avec :hover */
+  .frame-menu {
+    .menu-checkbox:hover ~ .checkbox-animation {width: 60px; }
+    .menu-checkbox:hover ~ .moving-price {transform: translateX(-60px);}
+    .menu-checkbox:hover ~ label { 
+      padding-right: 120px;  //redéfini la taille pour l'ellipsis
+    }
+  }
+}
+
+

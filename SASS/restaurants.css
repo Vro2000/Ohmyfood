@@ -1,11 +1,6 @@
 @charset "UTF-8";
 /**************** VARIABLES ****************/
-/* couleurs*/
-/*ombres*/
-/*font-family*/
 /**************** MIXINS ****************/
-/**************** SCSS ****************/
-/* remise à 0 styles par défaut pour tous les éléments + border-box inclu padding et border dans la largeur/hauteur.*/
 * {
   box-sizing: border-box;
   margin: 0;
@@ -22,7 +17,6 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
 }
 
 h1 {
@@ -38,18 +32,11 @@ h2 {
   padding-bottom: 10px;
 }
 
-h3 {
-  font-size: 18px;
-  font-weight: 500;
+a {
+  color: black;
 }
 
-p {
-  font-size: 15px;
-  font-weight: 300;
-  padding: 5px 0;
-}
-
-/************ header (mobile) *********/
+/************ header *********/
 header {
   display: flex;
   justify-content: center;
@@ -69,36 +56,46 @@ header .go-back.home { /* ajout de la class home sur la page d'accueil uniquemen
 header .logo {
   width: 162px;
 }
+@media (min-width: 768px) {
+  header .logo {
+    width: 200px;
+  }
+}
 
-/************  hero image   *********/
-.menu-img {
+.banniere {
   width: 100%;
   height: 275px;
+  overflow: hidden;
+  display: flex;
+}
+.banniere img {
+  width: 100%;
   -o-object-fit: cover;
-     object-fit: cover; /* Empêche la déformation de l'image */
+     object-fit: cover;
+  -o-object-position: center 60%;
+     object-position: center 60%;
 }
 
 .restaurant-choisi {
   width: 90%;
   min-width: 375px;
   max-width: 1055px;
-  position: absolute;
   top: -50px;
   background-color: #f6f6f6;
   border-radius: 30px 30px 0 0;
   position: relative;
   display: flex;
   flex-direction: column;
-  /************ zone titre    *********/
+  /************ zone titre *********/
   /************  section menus   *********/
 }
-.restaurant-choisi::after { /* crée une zone de 50px en bas pour compenser le décalage du haut*/
-  content: ""; /* permet au navigateur de générer un pseudo élement puisqu'il n'y a pas de contenu coté html*/
-  position: absolute; /* sinon le pseudo élément se placerait dans le flux après le décalage de son parent*/
-  width: 100%; /* sur la même largeur que son parent*/
-  bottom: -50px; /* décalage de 50 vers le bas*/
-  height: 50px; /* Hauteur pour compenser le décalage */
-  background-color: inherit; /* Utilise le même fond que l'élément parent */
+.restaurant-choisi::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  bottom: -50px;
+  height: 50px;
+  background-color: inherit;
 }
 .restaurant-choisi .heart-zone {
   position: absolute;
@@ -136,7 +133,7 @@ header .logo {
   flex-direction: column;
   gap: 15px;
   padding: 5px;
-  /************* animation appearance ************/
+  /************* animation appear ************/
   /* Applique un délai d'animation aux enfants de section-menu dans l'ordre d'apparition*/
 }
 .restaurant-choisi .section-menu .souligne {
@@ -161,15 +158,29 @@ header .logo {
   flex-direction: column;
   /************* animation price ************/
 }
-.restaurant-choisi .section-menu .frame-menu .menu-checkbox { /* Cache la case à cocher */
+.restaurant-choisi .section-menu .frame-menu .menu-checkbox {
   position: absolute;
   opacity: 0;
 }
-.restaurant-choisi .section-menu .frame-menu h3, .restaurant-choisi .section-menu .frame-menu p { /* Ajout ellipsis*/
-  width: 87%;
-  white-space: nowrap; /* Empêche le texte de passer à la ligne suivante */
-  overflow: hidden; /* Cache le contenu qui dépasse de la div */
-  text-overflow: ellipsis; /* Ajoute des points de suspension si le texte dépasse */
+.restaurant-choisi .section-menu .frame-menu label {
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  z-index: 1;
+  width: 100%;
+  padding-right: 60px;
+}
+.restaurant-choisi .section-menu .frame-menu label span {
+  width: 100%;
+  display: block;
+  font-size: 15px;
+  font-weight: 300;
+  padding: 5px 0;
+}
+.restaurant-choisi .section-menu .frame-menu label, .restaurant-choisi .section-menu .frame-menu span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   transition: width 0.5s;
 }
 .restaurant-choisi .section-menu .frame-menu .moving-price {
@@ -178,37 +189,36 @@ header .logo {
   position: absolute;
   right: 15px;
   top: 40px;
-  transition: transform 0.5s ease;
+  transition: transform 0.1s linear;
 }
-.restaurant-choisi .section-menu .frame-menu .background-animation {
+.restaurant-choisi .section-menu .frame-menu .checkbox-animation {
   position: absolute;
   top: 0;
-  right: 0; /* Commence du côté droit */
-  width: 0px; /* Commence sans largeur */
+  right: 0;
+  width: 0px;
   height: 100%;
-  background-color: #99e2d0;
   border-radius: 0 20px 20px 0;
-  color: #99e2d0; /* pour l'icone*/
+  background-color: #99e2d0;
+  color: #99e2d0;
   font-size: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden; /* pour l'icone*/
-  transition: width 0.5s;
+  overflow: hidden;
+  transition: width 0.1s linear;
 }
-.restaurant-choisi .section-menu .frame-menu .menu-checkbox:checked ~ .background-animation {
+.restaurant-choisi .section-menu .frame-menu .menu-checkbox:checked ~ .checkbox-animation {
   width: 60px;
 }
 .restaurant-choisi .section-menu .frame-menu .menu-checkbox:checked ~ .moving-price {
-  transform: translateX(-60px); /* Déplace le prix de la même valeur que background */
+  transform: translateX(-60px);
 }
-.restaurant-choisi .section-menu .frame-menu .menu-checkbox:checked ~ h3,
-.restaurant-choisi .section-menu .frame-menu .menu-checkbox:checked ~ p {
-  width: calc(87% - 60px);
+.restaurant-choisi .section-menu .frame-menu .menu-checkbox:checked ~ label {
+  padding-right: 120px;
 }
 .restaurant-choisi .section-menu .appear {
   opacity: 0;
-  animation: fadeInOpacity 0.5s forwards;
+  animation: fadeInOpacity 1s forwards;
 }
 .restaurant-choisi .section-menu:nth-child(2) .appear:nth-child(1) {
   animation-delay: 0s;
@@ -221,6 +231,9 @@ header .logo {
 }
 .restaurant-choisi .section-menu:nth-child(2) .appear:nth-child(4) {
   animation-delay: 0.6s;
+}
+.restaurant-choisi .section-menu:nth-child(2) .appear:nth-child(5) {
+  animation-delay: 0.7s;
 }
 .restaurant-choisi .section-menu:nth-child(3) .appear:nth-child(1) {
   animation-delay: 0.8s;
@@ -263,19 +276,20 @@ header .logo {
   border-radius: 25px;
   cursor: pointer;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: background-image 1s linear, box-shadow 1s ease; /*fonctionne aller et retour*/
+  transition: background-image 2s linear, box-shadow 1s ease;
   margin: 40px auto 10px auto;
   padding: 15px 60px;
 }
 .restaurant-choisi .button-commander:hover {
   background-image: linear-gradient(to top, #af79e2, #fe9fdf);
+  transition: background-image 2s linear, box-shadow 1s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 /**************** footer ****************/
 footer {
   background-color: #353535;
-  padding: 30px 30px;
+  padding: 30px 25px;
   display: flex;
   gap: 13px;
   flex-direction: column;
@@ -286,6 +300,7 @@ footer ul {
 footer ul li {
   margin-top: 10px;
   margin-bottom: 10px;
+  color: white;
   font-size: 16px;
 }
 footer ul li:nth-child(-n+2) {
@@ -294,22 +309,20 @@ footer ul li:nth-child(-n+2) {
 footer ul li:nth-child(n+3) {
   font-weight: 300;
 }
-footer a, footer i {
+footer ul li a {
   color: white;
 }
-footer i {
-  font-size: 12px;
-}
-footer .footer-icon {
+footer ul .footer-icon {
   display: inline-block;
   width: 20px;
 }
-footer #footer-logo {
-  width: 96px;
-  height: auto;
+footer ul .footer-icon i {
+  font-size: 12px;
+  color: white;
 }
-footer svg path {
-  fill: #ffffff;
+footer .footer-logo {
+  filter: invert(100%);
+  width: 95px;
 }
 
 /**************** MEDIA QUERIES ****************/
@@ -318,10 +331,9 @@ footer svg path {
     max-width: 1440px;
     margin-left: auto;
     margin-right: auto;
-    padding: 0 20px;
   }
-  .menu-img {
-    max-height: 383px;
+  .banniere {
+    height: 383px;
   }
   .en-tete {
     display: flex;
@@ -337,17 +349,29 @@ footer svg path {
   }
   footer {
     flex-direction: row-reverse;
-    align-items: center;
   }
   footer ul {
     display: flex;
     flex-direction: row;
-    gap: 12px;
+    gap: 15px;
+  }
+  footer ul li {
+    font-size: 15px;
   }
   footer ul li:nth-child(2) {
-    margin-right: 2em; /* Espacement après le deuxième élément*/
+    margin-right: 1.5em;
   }
   footer ul li:nth-child(4) {
-    margin-right: 3em; /* Espacement après le quatrième élément*/
+    margin-right: 1.5em;
   }
-}/*# sourceMappingURL=menu.css.map */
+  /* Active les animations avec :hover */
+  .frame-menu .menu-checkbox:hover ~ .checkbox-animation {
+    width: 60px;
+  }
+  .frame-menu .menu-checkbox:hover ~ .moving-price {
+    transform: translateX(-60px);
+  }
+  .frame-menu .menu-checkbox:hover ~ label {
+    padding-right: 120px;
+  }
+}/*# sourceMappingURL=restaurants.css.map */

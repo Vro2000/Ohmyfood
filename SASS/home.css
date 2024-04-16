@@ -1,11 +1,8 @@
 @charset "UTF-8";
 /**************** VARIABLES ****************/
-/* couleurs*/
-/*ombres*/
-/*font-family*/
 /**************** MIXINS ****************/
 .loader-screen {
-  animation: fadeOut 12s forwards;
+  animation: fadeOut 3s forwards;
   position: fixed;
   top: 0;
   left: 0;
@@ -14,105 +11,100 @@
   background-color: #eaeaea;
   display: flex;
   justify-content: center;
-  align-items: center;
-  z-index: 1000;
+  padding-top: 20%;
+  z-index: 100;
 }
 .loader-screen .loader {
-  position: absolute;
-  top: 10%;
-  left: 0;
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  background: radial-gradient(circle at center, #99e2d0, #9356dc, #9356dc, #99e2d0, #9356dc);
-  animation: loader-move 8s infinite linear, loader-gradient-fade 5s infinite, loader-spin 5s infinite;
+  width: 375px;
+  height: 60px;
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background: linear-gradient(to right, #9356dc, #99e2d0, #9356dc, #008766, #99e2d0, #9356dc, #99e2d0, #008766);
+  background-size: 400% 100%;
+  animation: gradient-shift 10s linear infinite;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
-.loader-screen .loader .toque {
-  position: absolute;
-  transform: rotate(-70deg);
-  top: 10px;
-  left: -20px;
-  width: 40px;
-  z-index: -10;
-}
-.loader-screen .loader .logo {
-  position: absolute;
-  left: 25px;
-  top: 45px;
-  width: 70px;
-}
-.loader-screen .loader p {
-  font-size: 14px;
-  color: white;
-  margin-top: 20px;
-  text-shadow: 1px 1px #7e7e7e;
-}
-.loader-screen::after {
+.loader-screen .loader::after {
   content: "";
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  color: #ff79da;
+  text-align: right;
   position: absolute;
-  top: calc(10% + 120px);
-  z-index: -10;
-  height: 3px;
+  top: 110%;
+  height: 2px;
   background-color: #99e2d0;
-  animation: shrink-line 8s infinite linear;
+  animation: shrink-line 3s infinite linear, countdown 3s infinite steps(3, end);
+}
+.loader-screen .loader .animated-image {
+  position: absolute;
+  height: 40%;
+  transform-origin: left;
+  animation: bounce-horizontal 3s infinite linear;
 }
 
-/*************** apparition disparition pre-loader sur la page home **********/
 @keyframes fadeOut {
   0% {
     opacity: 1;
   }
   99% {
     opacity: 1;
-    z-index: 1000;
+    z-index: 100;
   }
   100% {
     opacity: 0;
     z-index: -10;
   }
 }
-/*********** Animation ligne***********/
 @keyframes shrink-line {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+@keyframes countdown {
+  0%, 10% {
+    content: "3";
+  }
+  11%, 50% {
+    content: "2";
+  }
+  51%, 89% {
+    content: "1";
+  }
+  90%, 100% {
+    content: "0";
+  }
+}
+@keyframes gradient-shift {
   0% {
-    right: -80px;
-    width: calc(100% + 80px);
+    background-position: 100% 50%;
   }
   100% {
-    right: -80px;
-    width: 0;
+    background-position: 0% 50%;
   }
 }
-/*********** Animation déplacement horizontal*********/
-@keyframes loader-move {
+@keyframes bounce-horizontal {
   0% {
-    left: -80px; /* Départ de la gauche + décallage*/
+    transform: translateX(0%) scaleX(0.5);
+  }
+  20% {
+    transform: translateX(80%) scaleX(1);
+  }
+  40% {
+    transform: translateX(220%) scaleX(0.5);
+  }
+  80% {
+    transform: translateX(80%) scaleX(1);
   }
   100% {
-    left: 100%;
+    transform: translateX(0%) scaleX(0.5);
   }
 }
-/********** Animation dégradé progressif **************/
-@keyframes loader-gradient-fade {
-  0%, 100% {
-    background-size: 100% 100%;
-    background-position: center;
-  }
-  50% {
-    background-size: 300% 300%;
-    background-position: center;
-  }
-}
-/************** Animation rotation **********/
-@keyframes loader-spin {
-  0%, 100% {
-    transform: rotateY(0deg);
-  }
-  50% {
-    transform: rotateY(90deg);
-  }
-}
-/**************** SCSS ****************/
-/* remise à 0 styles par défaut pour tous les éléments + border-box inclu padding et border dans la largeur/hauteur.*/
 * {
   box-sizing: border-box;
   margin: 0;
@@ -132,13 +124,11 @@ main {
 }
 
 h1 {
-  margin: 0;
   font-size: 24px;
   font-weight: 700;
 }
 
 h2 {
-  margin: 0;
   font-size: 18px;
   font-weight: 700;
   color: #353535;
@@ -164,8 +154,13 @@ header .go-back.home { /* ajout de la class home sur la page d'accueil uniquemen
 header .logo {
   width: 162px;
 }
+@media (min-width: 768px) {
+  header .logo {
+    width: 200px;
+  }
+}
 
-/************ section recherches ***********/
+/******** section recherches *******/
 .search-section {
   width: 100%;
   text-align: center;
@@ -188,12 +183,10 @@ header .logo {
   text-align: center;
 }
 .search-section .location ::-moz-placeholder {
-  /* annule style par défaut sur firefox et chrome*/
   opacity: 1;
   color: black;
 }
 .search-section .location ::placeholder {
-  /* annule style par défaut sur firefox et chrome*/
   opacity: 1;
   color: black;
 }
@@ -222,18 +215,25 @@ header .logo {
   border-radius: 25px;
   cursor: pointer;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: background-image 1s linear, box-shadow 1s ease; /*fonctionne aller et retour*/
+  transition: background-image 2s linear, box-shadow 1s ease;
   padding: 15px 20px;
 }
 .search-section .hero .button:hover {
   background-image: linear-gradient(to top, #af79e2, #fe9fdf);
+  transition: background-image 2s linear, box-shadow 1s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 /************ section fonctionnement  ********/
 .section-fonctionnement {
   width: 100%;
-  padding: 50px 20px 50px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.fonctionnement {
+  width: 100%;
+  padding: 50px 20px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -241,83 +241,81 @@ header .logo {
   font-weight: 500;
   gap: 30px;
 }
-.section-fonctionnement .zone-frame {
+.fonctionnement .zone-frame {
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 2em;
 }
-.section-fonctionnement .zone-frame .frame {
-  width: 97%;
-  max-width: 322px;
+.fonctionnement .zone-frame .frame {
+  width: calc(100% - 12px);
   background-color: #f6f6f6;
   border-radius: 20px;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-  padding: 26px 0 26px 1.8em;
+  padding: 25px;
   margin-left: 10px;
   position: relative;
   display: flex;
-  gap: 1em;
+  gap: 25px;
 }
-.section-fonctionnement .zone-frame .frame .frame-number {
+.fonctionnement .zone-frame .frame .frame-number {
   background-color: #9356dc;
   color: white;
-  font-size: 16px;
+  font-size: 15px;
   border-radius: 50%;
-  padding: 8px;
-  height: 24px;
+  height: 25px;
+  width: 25px;
   display: flex;
+  justify-content: center;
   align-items: center;
   position: absolute;
   left: -12px;
   top: 50%;
   transform: translate(0, -50%);
 }
-.section-fonctionnement .zone-frame .frame .i-grey {
+.fonctionnement .zone-frame .frame .i-grey {
   color: #7e7e7e;
 }
-.section-fonctionnement .zone-frame .frame .i-purple {
+.fonctionnement .zone-frame .frame .i-purple {
   color: #9356dc;
 }
 
 /************ section restaurants *********/
+.section-restaurants {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #f6f6f6;
+}
+
 .restaurants {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  background-color: #f6f6f6;
-  padding: 50px 20px 50px 20px;
   align-items: flex-start;
+  padding: 50px 20px 50px 20px;
+  gap: 15px;
 }
 .restaurants .zone-card {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 .restaurants .zone-card .restaurant-card {
   position: relative;
-  width: 340px;
+  width: 100%;
   height: 251px;
   background-color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  overflow: hidden;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
-}
-.restaurants .zone-card .restaurant-card .restaurant-image {
-  position: relative;
+  overflow: hidden;
 }
 .restaurants .zone-card .restaurant-card .restaurant-image img {
   width: 100%;
   height: 175px;
   -o-object-fit: cover;
-     object-fit: cover; /* Empêche la déformation de l'image */
-  display: block;
+     object-fit: cover;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
@@ -386,7 +384,7 @@ header .logo {
 /************ footer  ********/
 footer {
   background-color: #353535;
-  padding: 30px 30px;
+  padding: 30px 25px;
   display: flex;
   gap: 13px;
   flex-direction: column;
@@ -397,6 +395,7 @@ footer ul {
 footer ul li {
   margin-top: 10px;
   margin-bottom: 10px;
+  color: white;
   font-size: 16px;
 }
 footer ul li:nth-child(-n+2) {
@@ -405,42 +404,48 @@ footer ul li:nth-child(-n+2) {
 footer ul li:nth-child(n+3) {
   font-weight: 300;
 }
-footer a, footer i {
+footer ul li a {
   color: white;
 }
-footer i {
-  font-size: 12px;
-}
-footer .footer-icon {
+footer ul .footer-icon {
   display: inline-block;
   width: 20px;
 }
-footer #footer-logo {
-  width: 96px;
-  height: auto;
+footer ul .footer-icon i {
+  font-size: 12px;
+  color: white;
 }
-footer svg path {
-  fill: #ffffff;
+footer .footer-logo {
+  filter: invert(100%);
+  width: 95px;
 }
 
-/**************** MEDIA QUERIES ****************/
+/******** MEDIA QUERIES *******/
 @media (min-width: 768px) {
+  .section-fonctionnement {
+    max-width: 1080px;
+  }
   .section-fonctionnement .zone-frame {
-    display: flex;
     flex-direction: row;
-    justify-content: center;
-    gap: 0.5em;
+    gap: 1em;
+  }
+  .section-fonctionnement .zone-frame .frame {
+    padding-right: 10px;
+    gap: 10px;
+  }
+  .restaurants {
+    max-width: 1080px;
   }
   .restaurants .zone-card {
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     row-gap: 2em;
-    -moz-column-gap: 50px;
-         column-gap: 50px;
+    justify-content: space-between;
   }
   .restaurants .zone-card .restaurant-card {
-    width: 46%;
+    width: 47%;
     height: 251px;
     max-width: 490px;
   }
@@ -456,9 +461,9 @@ footer svg path {
     font-size: 15px;
   }
   footer ul li:nth-child(2) {
-    margin-right: 2em; /* Espacement après le deuxième élément*/
+    margin-right: 2em;
   }
   footer ul li:nth-child(4) {
-    margin-right: 2em; /* Espacement après le quatrième élément*/
+    margin-right: 2em;
   }
-} /*fin média query*//*# sourceMappingURL=home.css.map */
+}/*# sourceMappingURL=home.css.map */
