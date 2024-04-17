@@ -142,7 +142,6 @@ header {
           position: absolute;
           right: 15px;
           top: 40px;
-          transition: transform 0.1s linear;
         }
 
         .checkbox-animation {
@@ -159,8 +158,8 @@ header {
           align-items: center;
           justify-content: center;
           overflow: hidden; //pour l'icone
-          transition: width 0.1s linear;
         }
+
       .menu-checkbox:checked ~ .checkbox-animation { // ~ pour tous les frères de menu-checkbox qui ont la class checkbox-animation
         width: 60px;
       }
@@ -170,11 +169,17 @@ header {
       .menu-checkbox:checked ~ label { 
         padding-right: 120px;  // redéfini la taille pour l'ellipsis
       }
-      
+      .menu-checkbox:checked ~ .checkbox-animation,
+      .menu-checkbox:checked ~ .moving-price {
+        transition-duration: 0.2s;
+      }
+      .menu-checkbox:not(:checked) ~ .checkbox-animation,
+      .menu-checkbox:not(:checked) ~ .moving-price {
+        transition-duration: 0.2s;
+      }
     }
   
     /************* animation appear ************/
-
       .appear {
         opacity: 0;
         animation: fadeInOpacity 1s forwards; // forwards conserve l'état final de l'animation
@@ -196,7 +201,6 @@ header {
       &:nth-child(4) .appear:nth-child(3) { animation-delay: 2s; }
       &:nth-child(4) .appear:nth-child(4) { animation-delay: 2.2s; }
   }
-
   @keyframes fadeInOpacity {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -256,15 +260,17 @@ footer {
       }
     }
   }
-
-   /* Active les animations avec :hover */
+   /* Animations avec :hover */
   .frame-menu {
-    .menu-checkbox:hover ~ .checkbox-animation {width: 60px; }
+    .menu-checkbox:hover ~ .checkbox-animation {width: 60px;}
     .menu-checkbox:hover ~ .moving-price {transform: translateX(-60px);}
-    .menu-checkbox:hover ~ label { 
-      padding-right: 120px;  //redéfini la taille pour l'ellipsis
+    .menu-checkbox:hover ~ label { padding-right: 120px;}
+
+    .menu-checkbox:not(:hover) ~ .checkbox-animation,
+    .menu-checkbox:not(:hover) ~ .moving-price {
+      transition-duration: 1s;
     }
-  }
+   }
 }
 
 

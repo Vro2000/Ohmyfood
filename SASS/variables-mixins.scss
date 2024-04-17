@@ -88,10 +88,10 @@ $font-2: "shrikhand", cursive;
   border-radius: 25px;
   cursor: pointer;
   box-shadow: $shadow-light;
-  transition: background-image 2s linear, box-shadow 1s ease;
+  transition: background-image 1s linear, box-shadow 1s linear;
   &:hover {
     background-image: linear-gradient(to top, #af79e2, #fe9fdf);
-    transition: background-image 2s linear, box-shadow 1s ease;
+    transition: background-image 1s linear, box-shadow 1s linear;
     box-shadow: $shadow-strong;
   }
 }

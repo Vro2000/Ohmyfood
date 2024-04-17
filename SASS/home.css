@@ -129,6 +129,11 @@ h1 {
 }
 
 h2 {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+h3 {
   font-size: 18px;
   font-weight: 700;
   color: #353535;
@@ -215,12 +220,12 @@ header .logo {
   border-radius: 25px;
   cursor: pointer;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: background-image 2s linear, box-shadow 1s ease;
+  transition: background-image 1s linear, box-shadow 1s linear;
   padding: 15px 20px;
 }
 .search-section .hero .button:hover {
   background-image: linear-gradient(to top, #af79e2, #fe9fdf);
-  transition: background-image 2s linear, box-shadow 1s ease;
+  transition: background-image 1s linear, box-shadow 1s linear;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
@@ -273,6 +278,9 @@ header .logo {
   top: 50%;
   transform: translate(0, -50%);
 }
+.fonctionnement .zone-frame .frame i {
+  font-size: 18px;
+}
 .fonctionnement .zone-frame .frame .i-grey {
   color: #7e7e7e;
 }
@@ -316,6 +324,8 @@ header .logo {
   height: 175px;
   -o-object-fit: cover;
      object-fit: cover;
+  -o-object-position: center 60%;
+     object-position: center 60%;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
@@ -422,12 +432,15 @@ footer .footer-logo {
 
 /******** MEDIA QUERIES *******/
 @media (min-width: 768px) {
+  h1 {
+    font-size: 40px;
+  }
   .section-fonctionnement {
     max-width: 1080px;
   }
   .section-fonctionnement .zone-frame {
     flex-direction: row;
-    gap: 1em;
+    gap: 10px;
   }
   .section-fonctionnement .zone-frame .frame {
     padding-right: 10px;
@@ -445,7 +458,7 @@ footer .footer-logo {
     justify-content: space-between;
   }
   .restaurants .zone-card .restaurant-card {
-    width: 47%;
+    width: 46%;
     height: 251px;
     max-width: 490px;
   }
