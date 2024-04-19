@@ -142,6 +142,7 @@ header {
           position: absolute;
           right: 15px;
           top: 40px;
+          transition-duration: 0.2s;
         }
 
         .checkbox-animation {
@@ -158,6 +159,7 @@ header {
           align-items: center;
           justify-content: center;
           overflow: hidden; //pour l'icone
+          transition-duration: 0.2s;
         }
 
       .menu-checkbox:checked ~ .checkbox-animation { // ~ pour tous les frères de menu-checkbox qui ont la class checkbox-animation
@@ -168,14 +170,6 @@ header {
       }
       .menu-checkbox:checked ~ label { 
         padding-right: 120px;  // redéfini la taille pour l'ellipsis
-      }
-      .menu-checkbox:checked ~ .checkbox-animation,
-      .menu-checkbox:checked ~ .moving-price {
-        transition-duration: 0.2s;
-      }
-      .menu-checkbox:not(:checked) ~ .checkbox-animation,
-      .menu-checkbox:not(:checked) ~ .moving-price {
-        transition-duration: 0.2s;
       }
     }
   

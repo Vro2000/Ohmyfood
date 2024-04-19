@@ -381,12 +381,6 @@ header .logo {
 .restaurants .zone-card .restaurant-card .heart-zone .heart-checkbox:checked ~ .heart-full {
   opacity: 1;
 }
-.restaurants .zone-card .restaurant-card .heart-zone .heart-checkbox:not(:checked) ~ .heart-empty {
-  opacity: 1;
-}
-.restaurants .zone-card .restaurant-card .heart-zone .heart-checkbox:not(:checked) ~ .heart-full {
-  opacity: 0;
-}
 .restaurants .zone-card .new .new-badge {
   display: block;
 }

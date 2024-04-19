@@ -122,12 +122,6 @@ header .logo {
 .restaurant-choisi .heart-zone .heart-checkbox:checked ~ .heart-full {
   opacity: 1;
 }
-.restaurant-choisi .heart-zone .heart-checkbox:not(:checked) ~ .heart-empty {
-  opacity: 1;
-}
-.restaurant-choisi .heart-zone .heart-checkbox:not(:checked) ~ .heart-full {
-  opacity: 0;
-}
 .restaurant-choisi .section-menu {
   display: flex;
   flex-direction: column;
@@ -189,6 +183,7 @@ header .logo {
   position: absolute;
   right: 15px;
   top: 40px;
+  transition-duration: 0.2s;
 }
 .restaurant-choisi .section-menu .frame-menu .checkbox-animation {
   position: absolute;
@@ -204,6 +199,7 @@ header .logo {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  transition-duration: 0.2s;
 }
 .restaurant-choisi .section-menu .frame-menu .menu-checkbox:checked ~ .checkbox-animation {
   width: 60px;
@@ -213,14 +209,6 @@ header .logo {
 }
 .restaurant-choisi .section-menu .frame-menu .menu-checkbox:checked ~ label {
   padding-right: 120px;
-}
-.restaurant-choisi .section-menu .frame-menu .menu-checkbox:checked ~ .checkbox-animation,
-.restaurant-choisi .section-menu .frame-menu .menu-checkbox:checked ~ .moving-price {
-  transition-duration: 0.2s;
-}
-.restaurant-choisi .section-menu .frame-menu .menu-checkbox:not(:checked) ~ .checkbox-animation,
-.restaurant-choisi .section-menu .frame-menu .menu-checkbox:not(:checked) ~ .moving-price {
-  transition-duration: 0.2s;
 }
 .restaurant-choisi .section-menu .appear {
   opacity: 0;

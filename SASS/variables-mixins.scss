@@ -27,7 +27,7 @@ $font-2: "shrikhand", cursive;
   padding: 20px 0 20px 0;
   box-shadow: $shadow-light;
 
-  .go-back {
+  .go-back { 
     display: inline-block;
     position: absolute;
     left: 0;
@@ -133,10 +133,5 @@ $font-2: "shrikhand", cursive;
     .heart-checkbox:checked ~ .heart-full {
       opacity: 1;
     }
-    .heart-checkbox:not(:checked) ~ .heart-empty {
-      opacity: 1;
-    }
-    .heart-checkbox:not(:checked) ~ .heart-full {
-      opacity: 0;
-    }
+    
 }
